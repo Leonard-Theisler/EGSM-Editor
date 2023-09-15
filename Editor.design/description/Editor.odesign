@@ -54,7 +54,7 @@
           </style>
         </containerMappings>
         <toolSections>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new stage&#xD;&#xA;" name="Stage" containerMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new stage&#xD;&#xA;" name="Stage" containerMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']" iconPath="/Editor.design/icons/sta.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -63,7 +63,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new nested stage" name="Nested Stage" containerMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']/@subContainerMappings[name='nestedStage']" iconPath="/Editor.design/icons/nested.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new nested stage" name="Nested Stage" containerMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']/@subContainerMappings[name='nestedStage']" iconPath="/Editor.design/icons/nestedsta.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -72,7 +72,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new milestone. " name="Milestone" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Milestone']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new milestone. " name="Milestone" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Milestone']" iconPath="/Editor.design/icons/mile.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -81,7 +81,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new data flow guard. " name="Data Flow Guard" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Data']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new data flow guard. " name="Data Flow Guard" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Data']" iconPath="/Editor.design/icons/Data.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -90,7 +90,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new process flow guard." name="Process Flow Guard" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Process']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new process flow guard." name="Process Flow Guard" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Process']" iconPath="/Editor.design/icons/process.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -99,7 +99,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new fault logger." name="Fault Logger" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Fault']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new fault logger." name="Fault Logger" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Fault']" iconPath="/Editor.design/icons/logger.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
