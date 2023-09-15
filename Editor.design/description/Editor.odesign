@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Editor" version="12.0.0.2017041100">
+  <ownedViewpoints name="MyViewpoint">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="model" domainClass="metaModel::Stage" enablePopupBars="true">
+      <metamodel href="file:/C:/Users/leona/OneDrive/Bureau/EGSMEditorv1/metaModel/model/metaModel.ecore#/"/>
+      <defaultLayer name="Default">
+        <containerMappings name="Stage" domainClass="metaModel::Stage">
+          <borderedNodeMappings name="Milestone" semanticCandidatesExpression="feature:milestone" domainClass="metaModel::milestone">
+            <style xsi:type="style:DotDescription" borderSizeComputationExpression="3" labelSize="12" showIcon="false" labelExpression="feature:Label" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <forbiddenSides>WEST</forbiddenSides>
+              <forbiddenSides>SOUTH</forbiddenSides>
+              <forbiddenSides>NORTH</forbiddenSides>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="Process" semanticCandidatesExpression="feature:processflowguard" domainClass="metaModel::processFlowGuard">
+            <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="3" labelSize="12" showIcon="false" labelExpression="feature:Label" labelAlignment="LEFT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <forbiddenSides>SOUTH</forbiddenSides>
+              <forbiddenSides>EAST</forbiddenSides>
+              <forbiddenSides>NORTH</forbiddenSides>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="Data" semanticCandidatesExpression="feature:dataflowguard" domainClass="metaModel::dataFlowGuard">
+            <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="3" labelSize="12" showIcon="false" labelExpression="feature:Label" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <forbiddenSides>SOUTH</forbiddenSides>
+              <forbiddenSides>EAST</forbiddenSides>
+              <forbiddenSides>NORTH</forbiddenSides>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="Fault" semanticCandidatesExpression="feature:faultlogger" domainClass="metaModel::faultLogger">
+            <style xsi:type="style:BundledImageDescription" labelSize="12" showIcon="false" labelExpression="feature:Label" resizeKind="NSEW" shape="triangle">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <forbiddenSides>WEST</forbiddenSides>
+              <forbiddenSides>SOUTH</forbiddenSides>
+              <forbiddenSides>NORTH</forbiddenSides>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </borderedNodeMappings>
+          <subContainerMappings name="nestedStage" semanticCandidatesExpression="feature:stage" domainClass="metaModel:Stage"/>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="40" arcHeight="40" borderSizeComputationExpression="3" labelSize="12" showIcon="false" labelExpression="feature:Label" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new stage&#xD;&#xA;" name="Stage" containerMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="metaModel::Stage" referenceName="stage"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new nested stage" name="Nested Stage" containerMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']/@subContainerMappings[name='nestedStage']" iconPath="/Editor.design/icons/nested.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="metaModel::Stage" referenceName="stage"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new milestone. " name="Milestone" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Milestone']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="metaModel::milestone" referenceName="milestone"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new data flow guard. " name="Data Flow Guard" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Data']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="metaModel::dataFlowGuard" referenceName="dataflowguard"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new process flow guard." name="Process Flow Guard" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Process']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="metaModel::processFlowGuard" referenceName="processflowguard"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new fault logger." name="Fault Logger" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='model']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Fault']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="metaModel::faultLogger" referenceName="faultlogger"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="Editor.design.Services"/>
+  </ownedViewpoints>
+</description:Group>
