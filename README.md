@@ -13,8 +13,7 @@ How to run the editor:
 If this does not work, try this instead:
 - Install Obeo Designer (https://www.obeodesigner.com/en/download)
 - Clone the repository
-- In the metaModel project, expand the model folder and open the diagram
-- Right click and select generate->all 
+- Import metaModel, metaModel.edit, and metaModel.editor into your workspace.
 - Launch a new runtime
 - Import the EGSM project and Editor.design projects into the new runtime
 - In the EGSM project, expand the EGSM.metamodel file and right click on the topmost stage
