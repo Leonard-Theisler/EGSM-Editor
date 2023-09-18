@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metaModelv2:Stage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:metaModelv2="http://www.example.org/metaModelv2" Label="">
+  <stage Label="ShipToLivorno" executionStatus="unopened" executionOutcome="regular" executionCompliance="ontime">
+    <processflowguard/>
+    <dataflowguard/>
+    <milestone/>
+    <faultlogger/>
+  </stage>
+</metaModelv2:Stage>
