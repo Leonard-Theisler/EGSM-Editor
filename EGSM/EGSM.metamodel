@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metaModel:Stage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:metaModel="http://www.example.org/metaModel">
   <stage Label="Seq">
-    <dataflowguard Label="DFG4: on container_e&#xD;&#xA;or truck_e if&#xD;&#xA;container[hooked]&#xD;&#xA;and truck[naples]"/>
+    <dataflowguard Label="DFG4: on container_e &#xD;&#xA;or truck_e if&#xD;&#xA;container[hooked]&#xD;&#xA;and truck[naples]"/>
     <dataflowguard Label="DFG3: on container_e&#xD;&#xA;or ship_e if&#xD;&#xA;container[hooked]&#xD;&#xA;and (ship[liverno])"/>
     <dataflowguard Label="DFG2: on container_e&#xD;&#xA;or train_e if &#xD;&#xA;container[hooked]&#xD;&#xA;and train[liverno]"/>
     <dataflowguard Label="DFG1: on container_e &#xD;&#xA;or truck_e &#xD;&#xA;if container[hooked]&#xD;&#xA;and &#xD;&#xA;truck[manufacturer]"/>

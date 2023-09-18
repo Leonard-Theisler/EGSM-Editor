@@ -6,7 +6,7 @@
       <defaultLayer name="Default">
         <containerMappings name="Stage" domainClass="metaModelv2::Stage">
           <borderedNodeMappings name="Milestone" semanticCandidatesExpression="feature:milestone" domainClass="metaModelv2::milestone">
-            <style xsi:type="style:DotDescription" borderSizeComputationExpression="3" labelSize="12" showIcon="false" labelExpression="feature:Label" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:DotDescription" borderSizeComputationExpression="3" labelSize="12" showIcon="false" labelExpression="feature:Label" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <forbiddenSides>WEST</forbiddenSides>
@@ -54,7 +54,7 @@
           </style>
         </containerMappings>
         <toolSections>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new stage&#xD;&#xA;" name="Stage" containerMappings="//@ownedViewpoints[name='Model']/@ownedRepresentations[name='Model']/@defaultLayer/@containerMappings[name='Stage']" iconPath="/Editor.design/Icons/sta.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new stage&#xD;&#xA;" name="Stage" containerMappings="//@ownedViewpoints[name='Model']/@ownedRepresentations[name='Model']/@defaultLayer/@containerMappings[name='Stage']" iconPath="/EGSMeditor.design/Icons/sta.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -63,7 +63,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new nested stage&#xD;&#xA;" name="Nested Stage" containerMappings="//@ownedViewpoints[name='Model']/@ownedRepresentations[name='Model']/@defaultLayer/@containerMappings[name='Stage']/@subContainerMappings[name='nestedStage']" iconPath="/Editor.design/Icons/nestedsta.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new nested stage&#xD;&#xA;" name="Nested Stage" containerMappings="//@ownedViewpoints[name='Model']/@ownedRepresentations[name='Model']/@defaultLayer/@containerMappings[name='Stage']/@subContainerMappings[name='nestedStage']" iconPath="/EGSMeditor.design/Icons/nestedsta.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
