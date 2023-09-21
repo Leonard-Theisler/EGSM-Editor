@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metaModelv3:Stage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:metaModelv3="http://www.example.org/metaModelv3">
+  <stage Label="Exc">
+    <stage/>
+    <faultlogger/>
+    <processflowguard/>
+    <dataflowguard Label="DFG1: something"/>
+    <milestone/>
+  </stage>
+</metaModelv3:Stage>
