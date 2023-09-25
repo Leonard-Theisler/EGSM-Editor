@@ -8,5 +8,5 @@ How to run the editor:
 - Clone the repository
 - Import metaModelv3, metaModelv3.edit, and metaModelv3.editor into your workspace (you will find these files on the "MetaModel" branch)
 - Launch a new runtime
-- Import the EGSMmodel3 project and EGSMeditor.design projects into the new runtime (you will find these on the "master" branch)
+- Import the EGSMmodel3 project and EGSMeditor3.design projects into the new runtime (you will find these on the "master" branch)
 - Expand the EGSMmodel3 project and open the editor
