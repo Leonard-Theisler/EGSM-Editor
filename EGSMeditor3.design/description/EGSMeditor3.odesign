@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Model" domainClass="metaModelv3::Stage" enablePopupBars="true">
       <metamodel href="http://www.example.org/metaModelv3#/"/>
       <defaultLayer name="Default">
-        <containerMappings name="Stage" domainClass="metaModelv3::Stage">
+        <containerMappings name="Stage" semanticCandidatesExpression="var:self" domainClass="metaModelv3::Stage">
           <borderedNodeMappings name="DataFlowGuard" semanticCandidatesExpression="feature:dataflowguard" domainClass="metaModelv3::dataFlowGuard">
             <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:Label" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/EGSMmodel3/Icons/DataIcon.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -41,7 +41,14 @@
               <forbiddenSides>NORTH</forbiddenSides>
             </style>
           </borderedNodeMappings>
-          <subContainerMappings name="NestedStage" semanticCandidatesExpression="feature:Stage" domainClass="metaModelv3::Stage"/>
+          <subContainerMappings name="NestedStage" semanticCandidatesExpression="feature:stage" domainClass="metaModelv3::Stage" reusedContainerMappings="//@ownedViewpoints[name='Model']/@ownedRepresentations[name='Model']/@defaultLayer/@containerMappings[name='Stage']/@subContainerMappings[name='NestedStage']">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="40" arcHeight="40" borderSizeComputationExpression="3" labelSize="12" showIcon="false" labelExpression="feature:Label" roundedCorner="true">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="40" arcHeight="40" borderSizeComputationExpression="3" labelSize="12" showIcon="false" labelExpression="feature:Label" roundedCorner="true">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
