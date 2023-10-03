@@ -6,7 +6,7 @@
       <defaultLayer name="Default">
         <containerMappings name="Stage" semanticCandidatesExpression="var:self" domainClass="metaModelv3::Stage">
           <borderedNodeMappings name="DataFlowGuard" semanticCandidatesExpression="feature:dataflowguard" domainClass="metaModelv3::dataFlowGuard">
-            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:Label" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/EGSMmodel3/Icons/DataIcon.svg">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:Label" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/EGSMmodel3/Icons/DataIcon.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <forbiddenSides>SOUTH</forbiddenSides>
@@ -15,7 +15,7 @@
             </style>
           </borderedNodeMappings>
           <borderedNodeMappings name="Milestone" semanticCandidatesExpression="feature:milestone" domainClass="metaModelv3::milestone">
-            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:Label" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/EGSMmodel3/Icons/MilestoneIcon.svg">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:Label" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/EGSMmodel3/Icons/MilestoneIcon.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <forbiddenSides>WEST</forbiddenSides>
@@ -24,7 +24,7 @@
             </style>
           </borderedNodeMappings>
           <borderedNodeMappings name="FaultLogger" semanticCandidatesExpression="feature:faultlogger" domainClass="metaModelv3::faultLogger">
-            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:Label" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/EGSMmodel3/Icons/FaultIcon.svg">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:Label" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/EGSMmodel3/Icons/FaultIcon.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <forbiddenSides>WEST</forbiddenSides>
@@ -33,7 +33,7 @@
             </style>
           </borderedNodeMappings>
           <borderedNodeMappings name="ProcessFlowGuard" semanticCandidatesExpression="feature:processflowguard" domainClass="metaModelv3::processFlowGuard">
-            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:Label" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/EGSMmodel3/Icons/ProcessIcon.svg">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:Label" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/EGSMmodel3/Icons/ProcessIcon.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <forbiddenSides>SOUTH</forbiddenSides>
@@ -57,15 +57,6 @@
           </style>
         </containerMappings>
         <toolSections>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new stage&#xD;&#xA;&#xD;&#xA;" name="Stage" containerMappings="//@ownedViewpoints[name='Model']/@ownedRepresentations[name='Model']/@defaultLayer/@containerMappings[name='Stage']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="metaModelv3::Stage" referenceName="stage"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new nested stage&#xD;&#xA;" name="Nested Stage" containerMappings="//@ownedViewpoints[name='Model']/@ownedRepresentations[name='Model']/@defaultLayer/@containerMappings[name='Stage']/@subContainerMappings[name='NestedStage']" iconPath="/EGSMmodel3/Icons/nestedStage.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
