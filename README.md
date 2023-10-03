@@ -9,4 +9,5 @@ How to run the editor:
 - Import metaModelv3, metaModelv3.edit, and metaModelv3.editor into your workspace (you will find these files on the "MetaModel" branch)
 - Launch a new runtime
 - Import the EGSMmodel3 project and EGSMeditor3.design projects into the new runtime (you will find these on the "master" branch)
-- Expand the EGSMmodel3 project and open the editor
+- Expand the EGSMmodel3 project until you find EGSMmodel4.metamodelv3 file
+- Either open the existing editor, or make a new one by right clicking the topmost stage and using new representation -> new model
