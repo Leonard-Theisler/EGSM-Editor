@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="newModel" domainClass="application::StageType" enablePopupBars="true">
       <metamodel href="http://siena.ibm.com/model/CompositeApplication#/"/>
       <defaultLayer name="Default">
-        <containerMappings name="Stage" semanticCandidatesExpression="var:self" domainClass="application::StageType">
+        <containerMappings name="Stage" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@toolSections.0/@ownedTools[name='Save']" domainClass="application::StageType">
           <borderedNodeMappings name="Milestone" semanticCandidatesExpression="feature:milestone" domainClass="application::MilestoneType">
             <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:description" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/newEditor.design/Icons/MilestoneIcon.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -99,6 +99,15 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::SubStageType" referenceName="subStage"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Save" mappings="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:Let" valueExpression="Services:myService"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
