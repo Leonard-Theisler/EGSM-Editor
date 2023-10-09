@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application:CompositeApplicationType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:application="http://siena.ibm.com/model/CompositeApplication">
   <component>
-    <guardedStageModel>
-      <stage>
-        <dataFlowGuard/>
-        <milestone/>
-        <processFlowGuard/>
+    <guardedStageModel id="shippingProcess-new_GSM" name="Default Process">
+      <stage id="shippingProcess-new" name="Default Process">
+        <dataFlowGuard description="" eventIds="StartEvent_1" expression="GSM.isEventOccurring(StartEvent_1)" id="shippingProcess-new_dfg1" language="JEXL" name="shippingProcess-new Data Flow Guard 1"/>
+        <dataFlowGuard eventIds="Task_2_s" expression="GSM.isEventOccurring(Task_2_s)" id="shippingProcess-new_dfg2" language="JEXL" name="shippingProcess-new Data Flow Guard 2"/>
+        <dataFlowGuard eventIds="IntermediateThrowEvent_1" expression="GSM.isEventOccurring(IntermediateThrowEvent_1)" id="shippingProcess-new_dfg3" language="JEXL" name="shippingProcess-new Data Flow Guard 3"/>
+        <milestone id="shippingProcess-new_m1" name="shippingProcess-new Milestone 1"/>
+        <subStage id="Task_4" name="StoreInWarehouse">
+          <dataFlowGuard eventIds="Task_4_s" expression="GSM.isEventOccurring(Task_4_s)" id="Task_4_dfg1" language="JEXL" name="Task_4 Data Flow Guard 1"/>
+          <milestone eventIds="Task_4_t" id="Task_4_m1" name="Task_4 Milestone 1"/>
+        </subStage>
       </stage>
     </guardedStageModel>
   </component>

@@ -38,6 +38,7 @@ public class Translator {
 	
 
 	public String getProcessName(String filename){
+		System.out.println("getProcessName()");
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder;
 		try {
@@ -81,10 +82,13 @@ public class Translator {
             // Apply the xsl file to the source file and write the result to the output file
             xformer.transform(source, result);
         } catch (FileNotFoundException e) {
+        	System.out.println("error1");
         	
         } catch (TransformerConfigurationException e) {
             // An error occurred in the XSL file
+        	System.out.println("error2");
         } catch (TransformerException e) {
+        	System.out.println("error3");
             // An error occurred while applying the XSL file
             // Get location of error in input file
             /*

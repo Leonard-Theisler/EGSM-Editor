@@ -6,7 +6,7 @@
       <defaultLayer name="Default">
         <containerMappings name="Stage" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@toolSections.0/@ownedTools[name='Save']" domainClass="application::StageType">
           <borderedNodeMappings name="Milestone" semanticCandidatesExpression="feature:milestone" doubleClickDescription="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@toolSections.0/@ownedTools[name='Save']" domainClass="application::MilestoneType">
-            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:description" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/newEditor.design/Icons/MilestoneIcon.svg">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/newEditor.design/Icons/MilestoneIcon.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <forbiddenSides>WEST</forbiddenSides>
@@ -15,7 +15,7 @@
             </style>
           </borderedNodeMappings>
           <borderedNodeMappings name="Fault Logger" semanticCandidatesExpression="feature:faultLogger" doubleClickDescription="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@toolSections.0/@ownedTools[name='Save']" domainClass="application::FaultLoggerType">
-            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:description" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/newEditor.design/Icons/FaultIcon.svg">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/newEditor.design/Icons/FaultIcon.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <forbiddenSides>WEST</forbiddenSides>
@@ -24,7 +24,7 @@
             </style>
           </borderedNodeMappings>
           <borderedNodeMappings name="Data Flow Guard" semanticCandidatesExpression="feature:dataFlowGuard" doubleClickDescription="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@toolSections.0/@ownedTools[name='Save']" domainClass="application::DataFlowGuardType">
-            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:description" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/newEditor.design/Icons/DataIcon.svg">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/newEditor.design/Icons/DataIcon.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <forbiddenSides>SOUTH</forbiddenSides>
@@ -33,7 +33,7 @@
             </style>
           </borderedNodeMappings>
           <borderedNodeMappings name="Process Flow Guard" semanticCandidatesExpression="feature:processFlowGuard" doubleClickDescription="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@toolSections.0/@ownedTools[name='Save']" domainClass="application::ProcessFlowGuardType">
-            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:description" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/newEditor.design/Icons/ProcessIcon.svg">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="7" resizeKind="NSEW" workspacePath="/newEditor.design/Icons/ProcessIcon.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <forbiddenSides>SOUTH</forbiddenSides>
@@ -42,14 +42,14 @@
             </style>
           </borderedNodeMappings>
           <subContainerMappings name="Sub Stage" semanticCandidatesExpression="feature:subStage" doubleClickDescription="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@toolSections.0/@ownedTools[name='Save']" domainClass="application::SubStageType" reusedBorderedNodeMappings="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Data%20Flow%20Guard'] //@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Fault%20Logger'] //@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Milestone'] //@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Process%20Flow%20Guard']" reusedContainerMappings="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@subContainerMappings[name='Sub%20Stage']">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="40" arcHeight="40" borderSizeComputationExpression="3" labelSize="12" showIcon="false" labelExpression="feature:description" roundedCorner="true">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="40" arcHeight="40" borderSizeComputationExpression="3" labelSize="12" showIcon="false" roundedCorner="true">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="40" arcHeight="40" borderSizeComputationExpression="3" labelSize="12" showIcon="false" labelExpression="feature:description" roundedCorner="true">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="40" arcHeight="40" borderSizeComputationExpression="3" labelSize="12" showIcon="false" roundedCorner="true">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -106,7 +106,7 @@
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:save"/>
+              <firstModelOperations xsi:type="tool_1:Let" valueExpression="service:save"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
