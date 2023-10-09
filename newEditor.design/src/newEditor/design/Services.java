@@ -30,9 +30,6 @@ import org.xml.sax.SAXException;
  */
 public class Services {
     
-    /**
-    * See http://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.sirius.doc%2Fdoc%2Findex.html&cp=24 for documentation on how to write service methods.
-    */
 	String inFile = "C:\\Users\\leona\\git\\EGSM-Editor\\newModel2\\newModel2.gsm_derived";
 	String outFile = "C:\\Users\\leona\\OneDrive\\Bureau\\SerializationTest\\newModel2.xml";
 	String xslFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2siena.xsl";
@@ -44,7 +41,6 @@ public class Services {
     
     public EObject save(EObject self) {
     	System.out.println("called");
-    	//transformXML("C:\\Users\\leona\\git\\EGSM-Editor\\newModel2\\newModel2.gsm_derived", "C:\\Users\\leona\\OneDrive\\Bureau\\SerializationTest\\newModel2.xml", "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2siena.xsl");
     	transformXML(inFile, outFile, xslFile);
     	System.out.println("terminated");
 		return self;

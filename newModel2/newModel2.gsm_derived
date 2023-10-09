@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application:CompositeApplicationType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:application="http://siena.ibm.com/model/CompositeApplication">
-  <component>
+<application:CompositeApplicationType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:application="http://siena.ibm.com/model/CompositeApplication" name="application">
+  <component id="model" name="model">
     <guardedStageModel id="shippingProcess-new_GSM" name="Default Process">
       <stage id="shippingProcess-new" name="Default Process">
-        <dataFlowGuard description="" eventIds="StartEvent_1" expression="GSM.isEventOccurring(StartEvent_1)" id="shippingProcess-new_dfg1" language="JEXL" name="shippingProcess-new Data Flow Guard 1"/>
-        <dataFlowGuard eventIds="Task_2_s" expression="GSM.isEventOccurring(Task_2_s)" id="shippingProcess-new_dfg2" language="JEXL" name="shippingProcess-new Data Flow Guard 2"/>
-        <dataFlowGuard eventIds="IntermediateThrowEvent_1" expression="GSM.isEventOccurring(IntermediateThrowEvent_1)" id="shippingProcess-new_dfg3" language="JEXL" name="shippingProcess-new Data Flow Guard 3"/>
-        <milestone id="shippingProcess-new_m1" name="shippingProcess-new Milestone 1"/>
-        <subStage id="Task_4" name="StoreInWarehouse">
-          <dataFlowGuard eventIds="Task_4_s" expression="GSM.isEventOccurring(Task_4_s)" id="Task_4_dfg1" language="JEXL" name="Task_4 Data Flow Guard 1"/>
-          <milestone eventIds="Task_4_t" id="Task_4_m1" name="Task_4 Milestone 1"/>
+        <dataFlowGuard description="" eventIds="StartEvent_1" expression="GSM.isEventOccurring(StartEvent_1)" id="casestudy_dfg1" language="JEXL" name="casestudy Data Flow Guard 1"/>
+        <dataFlowGuard eventIds="Container_e" expression="({infoModel./infoModel/Container/status} == [EmptyWarehouseUnhooked]) and ({infoModel./infoModel/Truck/status} == [MtoMoving]) and GSM.isEventOccurring(Container_e)" id="casestudy_dfg2" language="JEXL" name="casestudy Data Flow Guard 2"/>
+        <dataFlowGuard eventIds="Truck_e" expression="({infoModel./infoModel/Container/status} == [EmptyWarehouseUnhooked]) and ({infoModel./infoModel/Truck/status} == [MtoMoving]) and GSM.isEventOccurring(Truck_e)" id="casestudy_dfg3" language="JEXL" name="casestudy Data Flow Guard 3"/>
+        <milestone id="casestudy_m1" name="casestudy MileStone 1">
+          <condition expression="(GSM.isMilestoneAchieved(ProvideContainer_m1)) and (GSM.isMilestoneAchieved(VerifyCarrierIdentity_BoundaryEvent_2_m1) or GSM.isMilestoneAchieved(VerifyCarrierIdentity_m1)) and (GSM.isMilestoneAchieved(BoundaryEvent_2_exception_m1)) and (GSM.isMilestoneAchieved(GoToProducer_m1) or GSM.isMilestoneAchieved(GoToProducer_m2)) and (GSM.isMilestoneAchieved(StartEvent_1_m1)) and (GSM.isMilestoneAchieved(StartShipment_m1)) and (GSM.isMilestoneAchieved(PickUpContainer_m1)) and (GSM.isMilestoneAchieved(EndEvent_1_m1))" id="casestudy_m1_c" language="JEXL" name="casestudy Milestone 1 Condition"/>
+        </milestone>
+        <subStage id="ProvideContainer" name="Provide Container">
+          <dataFlowGuard eventIds="Container_e" expression="({infoModel./infoModel/Container/status} == [EmptyWarehouseUnhooked]) and ({infoModel./infoModel/Truck/status} == [MtoMoving]) and GSM.isEventOccurring(Container_e)" id="ProvideContainer_dfg1" language="JEXL" name="ProvideContainer Data Flow Guard 1"/>
+          <dataFlowGuard eventIds="Truck_e" expression="({infoModel./infoModel/Container/status} == [EmptyWarehouseUnhooked]) and ({infoModel./infoModel/Truck/status} == [MtoMoving]) and GSM.isEventOccurring(Truck_e)" id="ProvideContainer_dfg2" language="JEXL" name="ProvideContainer Data Flow Guard 2"/>
+          <milestone eventIds="Container_l" id="ProvideContainer_m1" name="ProvideContainer Milestone 1">
+            <condition expression="({infoModel./infoModel/Container/status} == [EmptyLoading_areaUnhooked]) and GSM.isEventOccurring(Container_l)" id="ProvideContainer_m1_c" language="JEXL" name="ProvideContainer Milestone 1 Condition"/>
+          </milestone>
+          <processFlowGuard id="ProvideContainer_pfg" name="Provide Container Process Flow Guard" expression="not (GSM.isMilestoneAchieved(ProvideContainer_m1)) and GSM.isMilestoneAchieved(StartEvent_1_m1)"/>
         </subStage>
       </stage>
     </guardedStageModel>

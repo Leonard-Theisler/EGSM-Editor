@@ -6,6 +6,16 @@
       <defaultLayer name="Default">
         <containerMappings name="Stage" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@toolSections.0/@ownedTools[name='Save']" domainClass="application::StageType">
           <borderedNodeMappings name="Milestone" semanticCandidatesExpression="feature:milestone" doubleClickDescription="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@toolSections.0/@ownedTools[name='Save']" domainClass="application::MilestoneType">
+            <borderedNodeMappings name="Condition" semanticCandidatesExpression="feature:condition" domainClass="application::ConditionType">
+              <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="" sizeComputationExpression="2">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <forbiddenSides>WEST</forbiddenSides>
+                <forbiddenSides>SOUTH</forbiddenSides>
+                <forbiddenSides>NORTH</forbiddenSides>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </borderedNodeMappings>
             <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/newEditor.design/Icons/MilestoneIcon.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -107,6 +117,15 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:Let" valueExpression="service:save"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new condition for a milestone" name="Condition" nodeMappings="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Milestone']/@borderedNodeMappings[name='Condition']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::ConditionType" referenceName="condition"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
