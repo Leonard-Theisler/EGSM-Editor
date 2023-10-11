@@ -4,7 +4,7 @@
     <semanticResources>newModel2.gsm_derived</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_to64IGOJEe6CWdcAIquJKA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_usRykGOJEe6CWdcAIquJKA" name="MVP2" repPath="#_usNhIGOJEe6CWdcAIquJKA" changeId="1696859796109">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_usRykGOJEe6CWdcAIquJKA" name="MVP2" repPath="#_usNhIGOJEe6CWdcAIquJKA" changeId="1696944405419">
         <description xmi:type="description_1:DiagramDescription" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']"/>
         <target xmi:type="application:Stage_._type" href="newModel2.gsm_derived#//@component.0/@guardedStageModel/@stage.0"/>
       </ownedRepresentationDescriptors>
@@ -65,7 +65,7 @@
                     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3p-dYmaqEe6QV9LYOQQc5g"/>
                   </children>
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_3p92UWaqEe6QV9LYOQQc5g" fontName="Segoe UI" fontHeight="12"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3p92UmaqEe6QV9LYOQQc5g" x="32" y="14" width="20" height="20"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3p92UmaqEe6QV9LYOQQc5g" x="47" y="33" width="20" height="20"/>
                 </children>
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_zfSltWaqEe6QV9LYOQQc5g" fontName="Segoe UI" fontHeight="12"/>
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zfSltmaqEe6QV9LYOQQc5g" x="189" y="21" width="55" height="57"/>
@@ -244,6 +244,9 @@
           <ownedBorderedNodes xmi:type="diagram:DNode" uid="_3p5k4GaqEe6QV9LYOQQc5g" width="2" height="2">
             <target xmi:type="application:Condition_._3_._type" href="newModel2.gsm_derived#//@component.0/@guardedStageModel/@stage.0/@subStage.0/@milestone.0/@condition"/>
             <semanticElements xmi:type="application:Condition_._3_._type" href="newModel2.gsm_derived#//@component.0/@guardedStageModel/@stage.0/@subStage.0/@milestone.0/@condition"/>
+            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
             <ownedStyle xmi:type="diagram:Square" uid="_3p6L8GaqEe6QV9LYOQQc5g" labelSize="12" showIcon="false" color="255,255,255">
               <description xmi:type="style:SquareDescription" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Milestone']/@borderedNodeMappings[name='Condition']/@style"/>
             </ownedStyle>
