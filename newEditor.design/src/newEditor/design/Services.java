@@ -28,6 +28,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import application.ConditionType;
+import application.MilestoneType;
+import application.impl.ConditionTypeImpl;
+
 
 /**
  * The services class used by VSM.
@@ -37,7 +41,6 @@ public class Services {
 	
 	String filePath;
 	String inFile = "C:\\Users\\leona\\git\\EGSM-Editor\\newModel2\\newModel2.gsm_derived";
-	String outFile = "C:\\Users\\leona\\OneDrive\\Bureau\\SerializationTest\\newModel2.xml";
 	String xslFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2siena.xsl";
 
     public EObject myService(EObject self) {
@@ -45,12 +48,21 @@ public class Services {
     }
     
     
-    public EObject save(EObject self) throws IOException {
+    public EObject save(EObject self) {
 
     	getFilePath();
     	transformXML(inFile, filePath, xslFile);
     	
 		return self;
+    }
+    
+    public void createCondition(MilestoneType milestone) {
+    	milestone.setCondition(new ConditionTypeImpl());
+    	
+    }
+    
+    public void setConditionDescription(ConditionTypeImpl condition, String description) {
+    	condition.setDescription(description);
     }
     
     // Opens the file explorer and gets the filename and path from the user   

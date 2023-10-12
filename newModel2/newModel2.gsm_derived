@@ -13,7 +13,7 @@
           <dataFlowGuard eventIds="Container_e" expression="({infoModel./infoModel/Container/status} == [EmptyWarehouseUnhooked]) and ({infoModel./infoModel/Truck/status} == [MtoMoving]) and GSM.isEventOccurring(Container_e)" id="ProvideContainer_dfg1" language="JEXL" name="ProvideContainer Data Flow Guard 1"/>
           <dataFlowGuard eventIds="Truck_e" expression="({infoModel./infoModel/Container/status} == [EmptyWarehouseUnhooked]) and ({infoModel./infoModel/Truck/status} == [MtoMoving]) and GSM.isEventOccurring(Truck_e)" id="ProvideContainer_dfg2" language="JEXL" name="ProvideContainer Data Flow Guard 2"/>
           <milestone description="" eventIds="Container_l" id="ProvideContainer_m1" name="ProvideContainer Milestone 1">
-            <condition expression="({infoModel./infoModel/Container/status} == [EmptyLoading_areaUnhooked]) and GSM.isEventOccurring(Container_l)" id="ProvideContainer_m1_c" language="JEXL" name="ProvideContainer Milestone 1 Condition"/>
+            <condition expression="{infoModel./infoModel/Container/status} == [EmptyLoading_areaUnhooked]) and GSM.isEventOccurring(Container_l)&quot; id=&quot;ProvideContainer_m1_c" id="ProvideContainer_m1_c" language="JEXL" name="ProvideContainer Milestone 1 Condition"/>
           </milestone>
           <processFlowGuard id="ProvideContainer_pfg" name="Provide Container Process Flow Guard" expression="not (GSM.isMilestoneAchieved(ProvideContainer_m1)) and GSM.isMilestoneAchieved(StartEvent_1_m1)"/>
         </subStage>
