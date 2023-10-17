@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="newEditor" version="12.0.0.2017041100">
   <ownedViewpoints name="newModel">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="newModel" domainClass="application::StageType" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="newModel" domainClass="application::CompositeApplicationType" enablePopupBars="true">
       <metamodel href="http://siena.ibm.com/model/CompositeApplication#/"/>
       <defaultLayer name="Default">
-        <containerMappings name="Stage" semanticCandidatesExpression="var:self" domainClass="application::StageType">
+        <containerMappings name="Stage" semanticCandidatesExpression="aql:self.component.guardedStageModel.stage" domainClass="application::StageType">
           <borderedNodeMappings name="Milestone" semanticCandidatesExpression="feature:milestone" domainClass="application::MilestoneType">
             <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/newEditor.design/Icons/MilestoneIcon.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -57,6 +57,17 @@
           </style>
         </containerMappings>
         <toolSections name="Palette">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new nested stage" name="Stage" containerMappings="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']" iconPath="/newEditor.design/Icons/Stage.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createStage">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:populateStage"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new data flow guard&#xD;&#xA;" name="Data Flow Guard" nodeMappings="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Data%20Flow%20Guard']" iconPath="/newEditor.design/Icons/dataFlowGuard.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -80,7 +91,9 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::MilestoneType" referenceName="milestone"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::MilestoneType" referenceName="milestone">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createCondition"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -119,6 +132,7 @@
     <metamodels href="http://siena.ibm.com/model/CompositeApplication#/"/>
     <categories name="Default Category">
       <pages name="Condition" labelExpression="Condition" domainClass="application::MilestoneType" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
+      <pages name="Hierarchy" labelExpression="Hierarchy" domainClass="application::CompositeApplicationType" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.1"/>
       <groups name="Default Group" labelExpression="Condition" domainClass="application::MilestoneType" semanticCandidateExpression="var:self">
         <controls xsi:type="properties:ButtonDescription" name="Create Condition" labelExpression="Create a condition for this milestone (required)" buttonLabelExpression="Create">
           <initialOperation>
@@ -157,6 +171,15 @@
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.condition">
               <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:newValue"/>
+            </firstModelOperations>
+          </initialOperation>
+        </controls>
+      </groups>
+      <groups name="Hierarchy" labelExpression="Hierarchy" domainClass="application::CompositeApplicationType" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:ButtonDescription" name="Create Hierarchy " labelExpression="Create Hierarchy (required)" buttonLabelExpression="Create">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createHierarchy">
+              <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createStage"/>
             </firstModelOperations>
           </initialOperation>
         </controls>

@@ -28,9 +28,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import application.CompositeApplicationType;
 import application.ConditionType;
 import application.MilestoneType;
+import application.SubStageType;
+import application.impl.ComponentTypeImpl;
 import application.impl.ConditionTypeImpl;
+import application.impl.DataFlowGuardTypeImpl;
+import application.impl.GuardedStageModelTypeImpl;
+import application.impl.MilestoneTypeImpl;
+import application.impl.StageTypeImpl;
 
 
 /**
@@ -61,10 +68,23 @@ public class Services {
     	
     }
     
-    public void setConditionDescription(ConditionTypeImpl condition, String description) {
-    	condition.setDescription(description);
+    public void populateStage(StageTypeImpl stage) {
+    	System.out.println("called");
+    	stage.setMilestone(new MilestoneTypeImpl());
+    	//stage.setDFG(new DataFlowGuardTypeImpl());
+
     }
     
+    public void createHierarchy(CompositeApplicationType app) {
+    	app.setComponent(new ComponentTypeImpl());
+    	app.getComponent().get(0).setGuardedStageModel(new GuardedStageModelTypeImpl());
+    }
+    
+    public void createStage(CompositeApplicationType app) {
+    	app.getComponent().get(0).getGuardedStageModel().setStage(new StageTypeImpl());
+    }
+    
+
     // Opens the file explorer and gets the filename and path from the user   
     public String getFilePath() {
         
