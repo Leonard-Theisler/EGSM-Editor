@@ -57,15 +57,11 @@
           </style>
         </containerMappings>
         <toolSections name="Palette">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new nested stage" name="Stage" containerMappings="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']" iconPath="/newEditor.design/Icons/Stage.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new stage" name="Stage" containerMappings="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']" iconPath="/newEditor.design/Icons/Stage.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createStage">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:populateStage"/>
-                </subModelOperations>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createStage"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new data flow guard&#xD;&#xA;" name="Data Flow Guard" nodeMappings="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Data%20Flow%20Guard']" iconPath="/newEditor.design/Icons/dataFlowGuard.gif">
@@ -73,7 +69,9 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::DataFlowGuardType" referenceName="dataFlowGuard"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::DataFlowGuardType" referenceName="dataFlowGuard">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="aql:'sdfg'"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

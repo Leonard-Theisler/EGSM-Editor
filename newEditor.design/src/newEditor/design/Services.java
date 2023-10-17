@@ -79,9 +79,26 @@ public class Services {
     	app.setComponent(new ComponentTypeImpl());
     	app.getComponent().get(0).setGuardedStageModel(new GuardedStageModelTypeImpl());
     }
+ 
+    int i;
     
     public void createStage(CompositeApplicationType app) {
+    	
+
+    	if (app.getComponent().get(0).getGuardedStageModel().getStage().size() >= 1) {
+    		i = app.getComponent().get(0).getGuardedStageModel().getStage().size();
+    	}
+    	else {
+    		i = 0;
+    	}
+    	
+    	
     	app.getComponent().get(0).getGuardedStageModel().setStage(new StageTypeImpl());
+    	app.getComponent().get(0).getGuardedStageModel().getStage().get(i).setName("Stage" + i);
+    	
+    	System.out.println("size" + app.getComponent().get(0).getGuardedStageModel().getStage().size());
+    	System.out.println(i);
+    	
     }
     
 
