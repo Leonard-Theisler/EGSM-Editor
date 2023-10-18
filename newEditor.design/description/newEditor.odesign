@@ -64,6 +64,18 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createStage"/>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new nested stage" name="Nested Stage" containerMappings="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@subContainerMappings[name='Sub%20Stage']" iconPath="/newEditor.design/Icons/nestedStage.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::SubStageType" referenceName="subStage">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="service:generateIDorName()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:generateIDorName()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new data flow guard&#xD;&#xA;" name="Data Flow Guard" nodeMappings="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Data%20Flow%20Guard']" iconPath="/newEditor.design/Icons/dataFlowGuard.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -118,18 +130,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new nested stage" name="Nested Stage" containerMappings="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@subContainerMappings[name='Sub%20Stage']" iconPath="/newEditor.design/Icons/nestedStage.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::SubStageType" referenceName="subStage">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="service:generateIDorName()"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:generateIDorName()"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:PopupMenu" name="Save">
             <menuItemDescription xsi:type="tool_1:OperationAction" name="Save as .xml">
               <view name="views"/>
@@ -148,7 +148,8 @@
     <categories name="Default Category">
       <pages name="Condition" labelExpression="Condition" domainClass="application::MilestoneType" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
       <pages name="Hierarchy" labelExpression="Hierarchy" domainClass="application::CompositeApplicationType" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.1"/>
-      <groups name="Default Group" labelExpression="Condition" domainClass="application::MilestoneType" semanticCandidateExpression="var:self">
+      <pages name="Event Model" labelExpression="Event Model" domainClass="application::CompositeApplicationType" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.2"/>
+      <groups name="Condition" labelExpression="Condition" domainClass="application::MilestoneType" semanticCandidateExpression="var:self">
         <controls xsi:type="properties:ButtonDescription" name="Create Condition" labelExpression="Create a condition for this milestone (required)" buttonLabelExpression="Create">
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createCondition"/>
@@ -191,12 +192,22 @@
         </controls>
       </groups>
       <groups name="Hierarchy" labelExpression="Hierarchy" domainClass="application::CompositeApplicationType" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties:ButtonDescription" name="Create Hierarchy " labelExpression="Create Hierarchy (required)" buttonLabelExpression="Create">
+        <controls xsi:type="properties:ButtonDescription" name="Create Hierarchy " labelExpression="Create Hierarchy (required)" helpExpression="This creates all of the necessary classes to build a model" buttonLabelExpression="Create">
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createHierarchy">
-              <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createStage"/>
-            </firstModelOperations>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createHierarchy"/>
           </initialOperation>
+        </controls>
+      </groups>
+      <groups name="EventModel" labelExpression="Group" domainClass="application::CompositeApplicationType" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:ButtonDescription" name="Create Event" labelExpression="Create Event" helpExpression="Creates an event for this event model" buttonLabelExpression="Create">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createEvent()"/>
+          </initialOperation>
+        </controls>
+        <controls xsi:type="properties:ListDescription" name="Event List" labelExpression="Events" valueExpression="aql:self.eventModel.event" displayExpression="aql:value.id">
+          <onClickOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self"/>
+          </onClickOperation>
         </controls>
       </groups>
     </categories>

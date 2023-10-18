@@ -32,7 +32,11 @@ import org.xml.sax.SAXException;
 import application.CompositeApplicationType;
 import application.ConditionType;
 import application.DataFlowGuardType;
+import application.EventType;
+import application.impl.DataItemTypeImpl;
+import application.impl.EventModelTypeImpl;
 import application.FaultLoggerType;
+import application.impl.InformationModelTypeImpl;
 import application.MilestoneType;
 import application.ProcessFlowGuardType;
 import application.StageType;
@@ -43,6 +47,7 @@ import application.impl.DataFlowGuardTypeImpl;
 import application.impl.GuardedStageModelTypeImpl;
 import application.impl.MilestoneTypeImpl;
 import application.impl.StageTypeImpl;
+import application.impl.EventTypeImpl;
 
 
 
@@ -57,7 +62,8 @@ public class Services {
 	String inFile = "C:\\Users\\leona\\git\\EGSM-Editor\\newModel2\\newModel2.gsm_derived";
 	String xslFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2siena.xsl";
     
-	int i = 0;
+	int stagenum = 0;
+	int eventnum = 0;
 	String id;
 	String name;
 
@@ -114,29 +120,53 @@ public class Services {
     	app.getComponent().get(0).setAccessControlModel("AccessControlModel");
     	
     	app.getComponent().get(0).setGuardedStageModel(new GuardedStageModelTypeImpl());
-    }
- 
-    
-    public void createStage(CompositeApplicationType app) {
     	
-    	//if stage 0, 1, 2 exist and stage 1 is deleted, the next stage created will be called 2 and not 1
-    	/*if (app.getComponent().get(0).getGuardedStageModel().getStage().size() >= 1) {
-    		i = app.getComponent().get(0).getGuardedStageModel().getStage().size();
+    	app.getComponent().get(0).setInformationModel(new InformationModelTypeImpl());
+    	app.getComponent().get(0).getInformationModel().setDataItem(new DataItemTypeImpl());
+    	
+    	app.setEventModel(new EventModelTypeImpl());
+    	
+    }
+    
+    public void createEvent(CompositeApplicationType app) {
+    	
+    	if (app.getEventModel().getEvent().size() >= 1) {
+    		eventnum = app.getEventModel().getEvent().size();
     	}
     	else {
-    		i = 0;
-    	}*/
+    		eventnum = 0;
+    	}
+    	
+    	id = UUID.randomUUID().toString().substring(0,4);
+
+    	
+    	app.getEventModel().setEvent(new EventTypeImpl()); 
+    	app.getEventModel().getEvent().get(eventnum).setId("Event " + id);
+    	
+    	
+    }
+ 
+
+    public void createStage(CompositeApplicationType app) {
+    	
+    	    	
+    	if (app.getComponent().get(0).getGuardedStageModel().getStage().size() >= 1) {
+    		stagenum = app.getComponent().get(0).getGuardedStageModel().getStage().size();
+    	}
+    	else {
+    		stagenum = 0;
+    	}
     	
     	id = UUID.randomUUID().toString().substring(0,4);
     	
     	app.getComponent().get(0).getGuardedStageModel().setStage(new StageTypeImpl());
     	
-    	//sets default values to ensure compatibility
-    	app.getComponent().get(0).getGuardedStageModel().getStage().get(i).setName("Stage " + id);  
-    	app.getComponent().get(0).getGuardedStageModel().getStage().get(i).setId("Stage " + id);
+    	//sets UUIDs to ensure compatibility
+    	app.getComponent().get(0).getGuardedStageModel().getStage().get(stagenum).setName("Stage " + id);  
+    	app.getComponent().get(0).getGuardedStageModel().getStage().get(stagenum).setId("Stage " + id);
     	
 
-    	i ++; 
+    	 
     	
     	
     }

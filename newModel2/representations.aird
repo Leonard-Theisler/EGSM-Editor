@@ -7,7 +7,7 @@
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_usRykGOJEe6CWdcAIquJKA" name="MVP2" repPath="#_usNhIGOJEe6CWdcAIquJKA" changeId="1697554670182">
         <description xmi:type="description_1:DiagramDescription" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4VeFkGz5Ee6r6uqTYbt58A" name="MVP3" repPath="#_4Vc3cGz5Ee6r6uqTYbt58A" changeId="1697620186686">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4VeFkGz5Ee6r6uqTYbt58A" name="MVP3" repPath="#_4Vc3cGz5Ee6r6uqTYbt58A" changeId="1697633108322">
         <description xmi:type="description_1:DiagramDescription" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']"/>
         <target xmi:type="application:CompositeApplication_._type" href="newModel2.gsm_derived#/"/>
       </ownedRepresentationDescriptors>
@@ -47,36 +47,32 @@
   <diagram:DSemanticDiagram uid="_4Vc3cGz5Ee6r6uqTYbt58A">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_4Vf6wGz5Ee6r6uqTYbt58A" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_4Vf6wWz5Ee6r6uqTYbt58A" type="Sirius" element="_4Vc3cGz5Ee6r6uqTYbt58A" measurementUnit="Pixel">
-        <children xmi:type="notation:Node" xmi:id="_Cpbv0G2WEe6Z3_SSPAQ_Jw" type="2002" element="_CpZ6oG2WEe6Z3_SSPAQ_Jw">
-          <children xmi:type="notation:Node" xmi:id="_Cpbv022WEe6Z3_SSPAQ_Jw" type="5006"/>
-          <children xmi:type="notation:Node" xmi:id="_Cpbv1G2WEe6Z3_SSPAQ_Jw" type="7001">
-            <styles xmi:type="notation:SortingStyle" xmi:id="_Cpbv1W2WEe6Z3_SSPAQ_Jw"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_Cpbv1m2WEe6Z3_SSPAQ_Jw"/>
+        <children xmi:type="notation:Node" xmi:id="_2BpNQG2zEe6_X64x2GLEOQ" type="2002" element="_2BmJ8G2zEe6_X64x2GLEOQ">
+          <children xmi:type="notation:Node" xmi:id="_2BpNQ22zEe6_X64x2GLEOQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_2BpNRG2zEe6_X64x2GLEOQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_2BpNRW2zEe6_X64x2GLEOQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_2BpNRm2zEe6_X64x2GLEOQ"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_E8GWAm2WEe6Z3_SSPAQ_Jw" type="3012" element="_E8Eg0G2WEe6Z3_SSPAQ_Jw">
-            <children xmi:type="notation:Node" xmi:id="_E8GWBW2WEe6Z3_SSPAQ_Jw" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_E8GWBm2WEe6Z3_SSPAQ_Jw" x="-234"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_E8OR0G2WEe6Z3_SSPAQ_Jw" type="3005" element="_E8Eg0W2WEe6Z3_SSPAQ_Jw">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_E8OR0W2WEe6Z3_SSPAQ_Jw" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8OR0m2WEe6Z3_SSPAQ_Jw"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_E8GWA22WEe6Z3_SSPAQ_Jw" fontName="Segoe UI" fontHeight="12"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8GWBG2WEe6Z3_SSPAQ_Jw" x="-62" y="35" width="70" height="31"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_2BpNQW2zEe6_X64x2GLEOQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2BpNQm2zEe6_X64x2GLEOQ" x="329" y="270"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_2Pe08G2zEe6_X64x2GLEOQ" type="2002" element="_2PbKkW2zEe6_X64x2GLEOQ">
+          <children xmi:type="notation:Node" xmi:id="_2Pe0822zEe6_X64x2GLEOQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_2Pe09G2zEe6_X64x2GLEOQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_2Pe09W2zEe6_X64x2GLEOQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_2Pe09m2zEe6_X64x2GLEOQ"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_FWpkAG2WEe6Z3_SSPAQ_Jw" type="3012" element="_FWnu0G2WEe6Z3_SSPAQ_Jw">
-            <children xmi:type="notation:Node" xmi:id="_FWpkA22WEe6Z3_SSPAQ_Jw" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_FWpkBG2WEe6Z3_SSPAQ_Jw" x="-267"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_FW1xQG2WEe6Z3_SSPAQ_Jw" type="3005" element="_FWnu0W2WEe6Z3_SSPAQ_Jw">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_FW1xQW2WEe6Z3_SSPAQ_Jw" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FW1xQm2WEe6Z3_SSPAQ_Jw"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_FWpkAW2WEe6Z3_SSPAQ_Jw" fontName="Segoe UI" fontHeight="12"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FWpkAm2WEe6Z3_SSPAQ_Jw" x="-62" width="70" height="31"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_2Pe08W2zEe6_X64x2GLEOQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2Pe08m2zEe6_X64x2GLEOQ" x="595" y="210"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_2iw9UG2zEe6_X64x2GLEOQ" type="2002" element="_2it6AG2zEe6_X64x2GLEOQ">
+          <children xmi:type="notation:Node" xmi:id="_2iw9U22zEe6_X64x2GLEOQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_2ixkYG2zEe6_X64x2GLEOQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_2ixkYW2zEe6_X64x2GLEOQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_2ixkYm2zEe6_X64x2GLEOQ"/>
           </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_Cpbv0W2WEe6Z3_SSPAQ_Jw" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Cpbv0m2WEe6Z3_SSPAQ_Jw" x="329" y="196"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_2iw9UW2zEe6_X64x2GLEOQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2iw9Um2zEe6_X64x2GLEOQ" x="336" y="154"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_4Vf6wmz5Ee6r6uqTYbt58A"/>
       </data>
@@ -84,29 +80,35 @@
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_4VhI4Gz5Ee6r6uqTYbt58A" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_4VhI4Wz5Ee6r6uqTYbt58A"/>
     </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_CpZ6oG2WEe6Z3_SSPAQ_Jw" name="Stage b978">
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_2BmJ8G2zEe6_X64x2GLEOQ" name="Stage 0ed7">
       <target xmi:type="application:Stage_._type" href="newModel2.gsm_derived#//@component.0/@guardedStageModel/@stage.0"/>
       <semanticElements xmi:type="application:Stage_._type" href="newModel2.gsm_derived#//@component.0/@guardedStageModel/@stage.0"/>
-      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_E8Eg0G2WEe6Z3_SSPAQ_Jw" name="Data Flow Guard 0c60" width="7" height="7" resizeKind="NSEW">
-        <target xmi:type="application:StageGuard_._3_._type" href="newModel2.gsm_derived#//@component.0/@guardedStageModel/@stage.0/@dataFlowGuard.0"/>
-        <semanticElements xmi:type="application:StageGuard_._3_._type" href="newModel2.gsm_derived#//@component.0/@guardedStageModel/@stage.0/@dataFlowGuard.0"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_E8Eg0W2WEe6Z3_SSPAQ_Jw" labelSize="12" showIcon="false" workspacePath="/newEditor.design/Icons/DataIcon.svg">
-          <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Data%20Flow%20Guard']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Data%20Flow%20Guard']"/>
-      </ownedBorderedNodes>
-      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_FWnu0G2WEe6Z3_SSPAQ_Jw" name="Process Flow Guard d556" width="7" height="7" resizeKind="NSEW">
-        <target xmi:type="application:ProcessFlowGuardType" href="newModel2.gsm_derived#//@component.0/@guardedStageModel/@stage.0/@processFlowGuard.0"/>
-        <semanticElements xmi:type="application:ProcessFlowGuardType" href="newModel2.gsm_derived#//@component.0/@guardedStageModel/@stage.0/@processFlowGuard.0"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_FWnu0W2WEe6Z3_SSPAQ_Jw" labelSize="12" showIcon="false" workspacePath="/newEditor.design/Icons/ProcessIcon.svg">
-          <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Process%20Flow%20Guard']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Process%20Flow%20Guard']"/>
-      </ownedBorderedNodes>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_CpahsG2WEe6Z3_SSPAQ_Jw" labelSize="12" showIcon="false" borderSize="3" borderSizeComputationExpression="3" foregroundColor="255,255,255">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_2BmJ8W2zEe6_X64x2GLEOQ" labelSize="12" showIcon="false" borderSize="3" borderSizeComputationExpression="3" foregroundColor="255,255,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_2PbKkW2zEe6_X64x2GLEOQ" name="Stage 4147">
+      <target xmi:type="application:Stage_._type" href="newModel2.gsm_derived#//@component.0/@guardedStageModel/@stage.1"/>
+      <semanticElements xmi:type="application:Stage_._type" href="newModel2.gsm_derived#//@component.0/@guardedStageModel/@stage.1"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_2PbxoG2zEe6_X64x2GLEOQ" labelSize="12" showIcon="false" borderSize="3" borderSizeComputationExpression="3" foregroundColor="255,255,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_2it6AG2zEe6_X64x2GLEOQ" name="Stage 5c98">
+      <target xmi:type="application:Stage_._type" href="newModel2.gsm_derived#//@component.0/@guardedStageModel/@stage.2"/>
+      <semanticElements xmi:type="application:Stage_._type" href="newModel2.gsm_derived#//@component.0/@guardedStageModel/@stage.2"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_2it6AW2zEe6_X64x2GLEOQ" labelSize="12" showIcon="false" borderSize="3" borderSizeComputationExpression="3" foregroundColor="255,255,255">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']"/>
