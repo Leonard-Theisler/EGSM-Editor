@@ -70,7 +70,8 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::DataFlowGuardType" referenceName="dataFlowGuard">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="aql:'sdfg'"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="service:generateIDorName()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:generateIDorName()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -80,7 +81,10 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::ProcessFlowGuardType" referenceName="processFlowGuard"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::ProcessFlowGuardType" referenceName="processFlowGuard">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="service:generateIDorName()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:generateIDorName()"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -90,7 +94,14 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::MilestoneType" referenceName="milestone">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createCondition"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createCondition">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.condition">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="service:generateIDorName()"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:generateIDorName()"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="service:generateIDorName()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:generateIDorName()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -100,7 +111,10 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::FaultLoggerType" referenceName="faultLogger"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::FaultLoggerType" referenceName="faultLogger">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="service:generateIDorName()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:generateIDorName()"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -109,7 +123,10 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::SubStageType" referenceName="subStage"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::SubStageType" referenceName="subStage">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="service:generateIDorName()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:generateIDorName()"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

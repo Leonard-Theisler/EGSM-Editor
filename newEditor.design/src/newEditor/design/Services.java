@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.UUID;
 
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
@@ -30,7 +31,11 @@ import org.xml.sax.SAXException;
 
 import application.CompositeApplicationType;
 import application.ConditionType;
+import application.DataFlowGuardType;
+import application.FaultLoggerType;
 import application.MilestoneType;
+import application.ProcessFlowGuardType;
+import application.StageType;
 import application.SubStageType;
 import application.impl.ComponentTypeImpl;
 import application.impl.ConditionTypeImpl;
@@ -38,6 +43,8 @@ import application.impl.DataFlowGuardTypeImpl;
 import application.impl.GuardedStageModelTypeImpl;
 import application.impl.MilestoneTypeImpl;
 import application.impl.StageTypeImpl;
+
+
 
 
 /**
@@ -49,7 +56,13 @@ public class Services {
 	String filePath;
 	String inFile = "C:\\Users\\leona\\git\\EGSM-Editor\\newModel2\\newModel2.gsm_derived";
 	String xslFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2siena.xsl";
+    
+	int i = 0;
+	String id;
+	String name;
 
+
+	
     public EObject myService(EObject self) {
     	return self;
     }
@@ -68,36 +81,63 @@ public class Services {
     	
     }
     
-    public void populateStage(StageTypeImpl stage) {
-    	System.out.println("called");
-    	stage.setMilestone(new MilestoneTypeImpl());
-    	//stage.setDFG(new DataFlowGuardTypeImpl());
+    public String generateIDorName(EObject element) {
+    	
+    	id = UUID.randomUUID().toString().substring(0,4);
 
+    	if (element instanceof SubStageType) {
+    		name = "Nested Stage ";
+    	}
+    	else if (element instanceof DataFlowGuardType) {
+    		name = "Data Flow Guard ";
+    	}
+    	else if (element instanceof ProcessFlowGuardType) {
+    		name = "Process Flow Guard ";
+    	}
+    	else if (element instanceof MilestoneType) {
+    		name = "Milestone ";
+    	}
+    	else if (element instanceof FaultLoggerType) {
+    		name = "Fault Logger ";
+    	}
+    	else if (element instanceof ConditionType) {
+    		name = "Condition ";
+    	}
+    	
+    	return name + id;
     }
     
     public void createHierarchy(CompositeApplicationType app) {
     	app.setComponent(new ComponentTypeImpl());
+    	app.getComponent().get(0).setId("model");
+    	app.getComponent().get(0).setName("model");
+    	app.getComponent().get(0).setAccessControlModel("AccessControlModel");
+    	
     	app.getComponent().get(0).setGuardedStageModel(new GuardedStageModelTypeImpl());
     }
  
-    int i;
     
     public void createStage(CompositeApplicationType app) {
     	
-
-    	if (app.getComponent().get(0).getGuardedStageModel().getStage().size() >= 1) {
+    	//if stage 0, 1, 2 exist and stage 1 is deleted, the next stage created will be called 2 and not 1
+    	/*if (app.getComponent().get(0).getGuardedStageModel().getStage().size() >= 1) {
     		i = app.getComponent().get(0).getGuardedStageModel().getStage().size();
     	}
     	else {
     		i = 0;
-    	}
+    	}*/
     	
+    	id = UUID.randomUUID().toString().substring(0,4);
     	
     	app.getComponent().get(0).getGuardedStageModel().setStage(new StageTypeImpl());
-    	app.getComponent().get(0).getGuardedStageModel().getStage().get(i).setName("Stage" + i);
     	
-    	System.out.println("size" + app.getComponent().get(0).getGuardedStageModel().getStage().size());
-    	System.out.println(i);
+    	//sets default values to ensure compatibility
+    	app.getComponent().get(0).getGuardedStageModel().getStage().get(i).setName("Stage " + id);  
+    	app.getComponent().get(0).getGuardedStageModel().getStage().get(i).setId("Stage " + id);
+    	
+
+    	i ++; 
+    	
     	
     }
     

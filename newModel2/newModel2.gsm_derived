@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application:CompositeApplicationType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:application="http://siena.ibm.com/model/CompositeApplication" name="application">
-  <component>
+  <component id="model" name="model">
     <guardedStageModel>
-      <stage name="Stage0"/>
-      <stage name="Stage2"/>
+      <stage id="Stage b978" name="Stage b978">
+        <dataFlowGuard id="Data Flow Guard ef48" name="Data Flow Guard 0c60"/>
+        <processFlowGuard id="Process Flow Guard 0a84" name="Process Flow Guard d556"/>
+      </stage>
     </guardedStageModel>
   </component>
 </application:CompositeApplicationType>
