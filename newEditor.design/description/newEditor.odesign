@@ -150,11 +150,6 @@
       <pages name="Hierarchy" labelExpression="Hierarchy" domainClass="application::CompositeApplicationType" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.1"/>
       <pages name="Event Model" labelExpression="Event Model" domainClass="application::CompositeApplicationType" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.2"/>
       <groups name="Condition" labelExpression="Condition" domainClass="application::MilestoneType" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties:ButtonDescription" name="Create Condition" labelExpression="Create a condition for this milestone (required)" buttonLabelExpression="Create">
-          <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createCondition"/>
-          </initialOperation>
-        </controls>
         <controls xsi:type="properties:TextDescription" name="Condition Description" labelExpression="Condition Description" helpExpression="This is the description of the condition associated to this milestone" valueExpression="aql:self.condition.description">
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.condition">

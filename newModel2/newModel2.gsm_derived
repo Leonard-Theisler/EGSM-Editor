@@ -9,9 +9,12 @@
       <dataItem/>
     </informationModel>
     <guardedStageModel>
-      <stage id="Stage 0ed7" name="Stage 0ed7"/>
-      <stage id="Stage 4147" name="Stage 4147"/>
-      <stage id="Stage 5c98" name="Stage 5c98"/>
+      <stage id="Stage c4ff" name="Stage c4ff">
+        <dataFlowGuard id="Data Flow Guard b70d" name="Data Flow Guard a3ff"/>
+        <milestone id="Milestone 5e81" name="Milestone b4d7">
+          <condition id="Condition 4a3a" name="Condition 0ba2"/>
+        </milestone>
+      </stage>
     </guardedStageModel>
   </component>
 </application:CompositeApplicationType>
