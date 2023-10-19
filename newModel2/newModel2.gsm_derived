@@ -1,20 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application:CompositeApplicationType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:application="http://siena.ibm.com/model/CompositeApplication" name="application">
-  <eventModel>
-    <event id="Event bd40"/>
-    <event id="Event 0927"/>
-  </eventModel>
-  <component accessControlModel="AccessControlModel" id="model" name="model">
-    <informationModel>
-      <dataItem/>
-    </informationModel>
-    <guardedStageModel>
-      <stage id="Stage c4ff" name="Stage c4ff">
-        <dataFlowGuard id="Data Flow Guard b70d" name="Data Flow Guard a3ff"/>
-        <milestone id="Milestone 5e81" name="Milestone b4d7">
-          <condition id="Condition 4a3a" name="Condition 0ba2"/>
-        </milestone>
-      </stage>
-    </guardedStageModel>
-  </component>
-</application:CompositeApplicationType>
+<application:CompositeApplicationType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:application="http://siena.ibm.com/model/CompositeApplication" name="application"/>
