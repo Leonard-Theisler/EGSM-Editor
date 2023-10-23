@@ -64,6 +64,7 @@ public class Services {
     
 	int stagenum = 0;
 	int eventnum = 0;
+	int stageIndex;
 	String id;
 	String name;
 
@@ -129,20 +130,14 @@ public class Services {
     }
     
     public void createEvent(CompositeApplicationType app) {
-    	
-    	if (app.getEventModel().getEvent().size() >= 1) {
-    		eventnum = app.getEventModel().getEvent().size();
-    	}
-    	else {
-    		eventnum = 0;
-    	}
+    	    	
+    	EventTypeImpl event = new EventTypeImpl();
     	
     	id = UUID.randomUUID().toString().substring(0,4);
+    	event.setId("Event " + id);
 
     	
-    	app.getEventModel().setEvent(new EventTypeImpl()); 
-    	app.getEventModel().getEvent().get(eventnum).setId("Event " + id);
-    	
+    	app.getEventModel().setEvent(event);     	
     	
     }
  
@@ -150,27 +145,23 @@ public class Services {
     public void createStage(CompositeApplicationType app) {
     	
     	    	
-    	if (app.getComponent().get(0).getGuardedStageModel().getStage().size() >= 1) {
-    		stagenum = app.getComponent().get(0).getGuardedStageModel().getStage().size();
-    	}
-    	else {
-    		stagenum = 0;
-    	}
+   	    	
+    	StageTypeImpl stage = new StageTypeImpl(); 
+    	MilestoneTypeImpl mile= new MilestoneTypeImpl();
+    	
+    	
+    	id = UUID.randomUUID().toString().substring(0,4);
+    	stage.setName("Stage " + id);
+    	id = UUID.randomUUID().toString().substring(0,4);
+    	stage.setId("Stage " + id);
+    	
+    	//stage.setMilestone(mile);
     	    	
-    	app.getComponent().get(0).getGuardedStageModel().setStage(new StageTypeImpl());
-    	
-    	//sets UUIDs to ensure compatibility
-    	id = UUID.randomUUID().toString().substring(0,4);
-    	app.getComponent().get(0).getGuardedStageModel().getStage().get(stagenum).setName("Stage " + id);  
-    	id = UUID.randomUUID().toString().substring(0,4);
-    	app.getComponent().get(0).getGuardedStageModel().getStage().get(stagenum).setId("Stage " + id);
-    	
-
-    	 
-    	
+    	app.getComponent().get(0).getGuardedStageModel().setStage(stage);
+    	   	
     	
     }
-    
+        
 
     // Opens the file explorer and gets the filename and path from the user   
     public String getFilePath() {
