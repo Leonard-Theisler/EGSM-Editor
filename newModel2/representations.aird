@@ -7,7 +7,7 @@
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_usRykGOJEe6CWdcAIquJKA" name="MVP2" repPath="#_usNhIGOJEe6CWdcAIquJKA" changeId="1697554670182">
         <description xmi:type="description_1:DiagramDescription" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4VeFkGz5Ee6r6uqTYbt58A" name="MVP3" repPath="#_4Vc3cGz5Ee6r6uqTYbt58A" changeId="1697707455064">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_4VeFkGz5Ee6r6uqTYbt58A" name="MVP3" repPath="#_4Vc3cGz5Ee6r6uqTYbt58A" changeId="1697798648853">
         <description xmi:type="description_1:DiagramDescription" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']"/>
         <target xmi:type="application:CompositeApplication_._type" href="newModel2.gsm_derived#/"/>
       </ownedRepresentationDescriptors>
@@ -47,12 +47,32 @@
   <diagram:DSemanticDiagram uid="_4Vc3cGz5Ee6r6uqTYbt58A">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_4Vf6wGz5Ee6r6uqTYbt58A" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_4Vf6wWz5Ee6r6uqTYbt58A" type="Sirius" element="_4Vc3cGz5Ee6r6uqTYbt58A" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_mA1qsG81Ee6_X64x2GLEOQ" type="2002" element="_mA1DoG81Ee6_X64x2GLEOQ">
+          <children xmi:type="notation:Node" xmi:id="_mA1qs281Ee6_X64x2GLEOQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_mA1qtG81Ee6_X64x2GLEOQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_mA1qtW81Ee6_X64x2GLEOQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_mA1qtm81Ee6_X64x2GLEOQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_mA1qsW81Ee6_X64x2GLEOQ" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mA1qsm81Ee6_X64x2GLEOQ" x="371" y="224"/>
+        </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_4Vf6wmz5Ee6r6uqTYbt58A"/>
       </data>
     </ownedAnnotationEntries>
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_4VhI4Gz5Ee6r6uqTYbt58A" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_4VhI4Wz5Ee6r6uqTYbt58A"/>
     </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_mA1DoG81Ee6_X64x2GLEOQ" name="Stage 39e0">
+      <target xmi:type="application:Stage_._type" href="newModel2.gsm_derived#//@component.0/@guardedStageModel/@stage.0"/>
+      <semanticElements xmi:type="application:Stage_._type" href="newModel2.gsm_derived#//@component.0/@guardedStageModel/@stage.0"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_mA1DoW81Ee6_X64x2GLEOQ" labelSize="12" showIcon="false" borderSize="3" borderSizeComputationExpression="3" foregroundColor="255,255,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']"/>
+    </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_4VdegGz5Ee6r6uqTYbt58A"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/newEditor.design/description/newEditor.odesign#//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer"/>

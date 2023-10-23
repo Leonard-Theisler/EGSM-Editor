@@ -156,13 +156,13 @@ public class Services {
     	else {
     		stagenum = 0;
     	}
-    	
-    	id = UUID.randomUUID().toString().substring(0,4);
-    	
+    	    	
     	app.getComponent().get(0).getGuardedStageModel().setStage(new StageTypeImpl());
     	
     	//sets UUIDs to ensure compatibility
+    	id = UUID.randomUUID().toString().substring(0,4);
     	app.getComponent().get(0).getGuardedStageModel().getStage().get(stagenum).setName("Stage " + id);  
+    	id = UUID.randomUUID().toString().substring(0,4);
     	app.getComponent().get(0).getGuardedStageModel().getStage().get(stagenum).setId("Stage " + id);
     	
 

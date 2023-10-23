@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application:CompositeApplicationType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:application="http://siena.ibm.com/model/CompositeApplication" name="application"/>
+<application:CompositeApplicationType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:application="http://siena.ibm.com/model/CompositeApplication" name="application">
+  <eventModel/>
+  <component accessControlModel="AccessControlModel" id="model" name="model">
+    <informationModel>
+      <dataItem/>
+    </informationModel>
+    <guardedStageModel>
+      <stage id="Stage a734" name="Stage 39e0"/>
+    </guardedStageModel>
+  </component>
+</application:CompositeApplicationType>
