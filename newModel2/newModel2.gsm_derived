@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application:CompositeApplicationType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:application="http://siena.ibm.com/model/CompositeApplication" name="application">
+<application:CompositeApplicationType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:application="http://siena.ibm.com/model/CompositeApplication" name="nullb0e6">
   <eventModel>
     <event id="Event 0b1c"/>
     <event id="Event d4ec"/>
@@ -12,14 +12,14 @@
     </informationModel>
     <guardedStageModel>
       <stage id="Stage a3cf" name="Stage d15d">
-        <dataFlowGuard id="Data Flow Guard cb7c" name="Data Flow Guard ea6f"/>
-        <milestone id="Milestone a019" name="Milestone d5b4">
-          <condition id="Condition b9f2" name="Condition 52c0"/>
+        <dataFlowGuard id="Data Flow Guard 1919" name="Data Flow Guard c21e"/>
+        <milestone id="Milestone fc77" name="Milestone aa00">
+          <condition id="Condition d14d" name="Condition f84e"/>
         </milestone>
-        <subStage id="Nested Stage fc35" name="Nested Stage 80d7">
-          <dataFlowGuard id="Data Flow Guard 7df2" name="Data Flow Guard 8b35"/>
-          <milestone id="Milestone dd71" name="Milestone 7d59">
-            <condition id="Condition 2ad3" name="Condition 5e66"/>
+        <subStage id="Nested Stage cec7" name="Nested Stage 19d4">
+          <dataFlowGuard id="Data Flow Guard a5a1" name="Data Flow Guard 19e3"/>
+          <milestone id="Milestone 591f" name="Milestone 5dca">
+            <condition id="Condition dd50" name="Condition 5faf"/>
           </milestone>
         </subStage>
         <processFlowGuard id="Process Flow Guard a760" name="Process Flow Guard 2e1c"/>

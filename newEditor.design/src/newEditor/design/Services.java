@@ -10,6 +10,8 @@ import java.nio.file.Path;
 import java.util.UUID;
 
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.DocumentBuilder;
@@ -29,6 +31,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import application.ComponentType;
 import application.CompositeApplicationType;
 import application.ConditionType;
 import application.DataFlowGuardType;
@@ -67,7 +70,7 @@ public class Services {
 	int stageIndex;
 	String id;
 	String name;
-
+	String failure = "You must create a model";
 
 	
     public EObject myService(EObject self) {
@@ -81,6 +84,13 @@ public class Services {
     	transformXML(inFile, filePath, xslFile);
     	
 		return self;
+    }
+    
+    public boolean applicationChecker(EObject self) {
+    	if (self instanceof CompositeApplicationType) {
+    		return true;
+    	}
+    	return false;
     }
     
     public void createCondition(MilestoneType milestone) {
@@ -144,24 +154,74 @@ public class Services {
 
     public void createStage(CompositeApplicationType app) {
     	
-    	    	
-   	    	
+    	//need to find a way to add dfg and milestones to the stages when they are created
     	StageTypeImpl stage = new StageTypeImpl(); 
-    	MilestoneTypeImpl mile= new MilestoneTypeImpl();
-    	
-    	
+
+   
     	id = UUID.randomUUID().toString().substring(0,4);
     	stage.setName("Stage " + id);
     	id = UUID.randomUUID().toString().substring(0,4);
     	stage.setId("Stage " + id);
     	
-    	//stage.setMilestone(mile);
-    	    	
     	app.getComponent().get(0).getGuardedStageModel().setStage(stage);
-    	   	
+    	
     	
     }
+    
+    public ComponentType getComponent(CompositeApplicationType app) {
+    	return app.getComponent().get(0);
+    }
         
+    
+    public boolean correctnessChecker(CompositeApplicationType app) {
+    	if (!hierarchyChecker(app) || !stageChecker(app)) {
+    		
+    		ErrorMessage EM = new ErrorMessage(failure);
+    	    
+    		return false;
+    	}
+    	
+    	
+    	return true;
+    }
+    
+    public boolean stageChecker(CompositeApplicationType app) {
+    	
+    	
+    	 for (int j = 0; j < app.getComponent().get(0).getGuardedStageModel().getStage().size(); j++) {
+    		 if (app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getDataFlowGuard().size() == 0 || app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getMilestone().size() == 0) {
+    			 failure = "All stages must have at least one data flow guard and one milestone.";
+    			 return false;
+    		 }
+    		 else if (app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getMilestone().size() != 0 && app.getComponent().get(0).getGuardedStageModel().getStage().get(0).getMilestone().get(0).getCondition() == null) {
+    			 failure = "All milestones must have a condition.";
+    			 return false;
+    		 }
+    		 if (app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getSubStage().size() != 0) {
+    			 for (int k = 0; k < app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getSubStage().size(); k++) {
+    				 if (app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getSubStage().get(k).getDataFlowGuard().size() == 0 || app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getSubStage().get(k).getMilestone().size() == 0) {
+    					 failure = "All nested stages must have at least one data flow guard and one milestone.";
+    					 return false;
+    	    		 }
+    				 else if (app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getSubStage().get(k).getMilestone().get(0).getCondition() == null) {
+    					 failure = "All nested stages must have at least one data flow guard and one milestone.";
+    					 return false;
+    				 }
+    			 }
+    		 }
+    	 }
+    	 
+    	 return true;	
+    }
+    
+    public boolean hierarchyChecker(CompositeApplicationType app) {
+    	if (app.getComponent().get(0) == null) {
+    		failure = "You have to create the hierarchy.";
+    		return false;
+    	}
+    	
+    	return true;
+    }
 
     // Opens the file explorer and gets the filename and path from the user   
     public String getFilePath() {
