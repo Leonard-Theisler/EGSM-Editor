@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.UUID;
 
 import javax.swing.JFileChooser;
@@ -50,6 +51,7 @@ import application.impl.DataFlowGuardTypeImpl;
 import application.impl.GuardedStageModelTypeImpl;
 import application.impl.MilestoneTypeImpl;
 import application.impl.StageTypeImpl;
+import application.impl.SubStageTypeImpl;
 import application.impl.EventTypeImpl;
 
 
@@ -71,6 +73,7 @@ public class Services {
 	String id;
 	String name;
 	String failure = "You must create a model";
+	ArrayList<String> alreadyGen = new ArrayList<String>();
 
 	
     public EObject myService(EObject self) {
@@ -86,13 +89,17 @@ public class Services {
 		return self;
     }
     
-    public boolean applicationChecker(EObject self) {
-    	if (self instanceof CompositeApplicationType) {
+    public boolean applicationChecker(EObject app) {
+    	if (app instanceof CompositeApplicationType) {
     		return true;
     	}
     	return false;
     }
     
+  
+    
+    
+  
     public void createCondition(MilestoneType milestone) {
     	milestone.setCondition(new ConditionTypeImpl());
     	
@@ -150,6 +157,203 @@ public class Services {
     	app.getEventModel().setEvent(event);     	
     	
     }
+    
+    public void generateEvents(CompositeApplicationType app) {
+    	int stages = app.getComponent().get(0).getGuardedStageModel().getStage().size();
+    	
+    	for (int i = 0; i < stages; i++) {
+    		for (int j = 0; j < app.getComponent().get(0).getGuardedStageModel().getStage().get(i).getMilestone().size(); j++) {
+    			if (app.getComponent().get(0).getGuardedStageModel().getStage().get(i).getMilestone().get(j).getEventIds() != null) {
+    				
+    				String eventID = app.getComponent().get(0).getGuardedStageModel().getStage().get(i).getMilestone().get(j).getEventIds();
+    				
+    				if (!alreadyGen.contains(eventID)) {
+    					
+    					EventTypeImpl event = new EventTypeImpl();
+    					event.setId(eventID);
+    					event.setName(eventID);
+        				alreadyGen.add(eventID);
+    				
+    					app.getEventModel().setEvent(event);
+    				}
+    			}
+    		
+    		}
+    		
+    		for (int j = 0; j < app.getComponent().get(0).getGuardedStageModel().getStage().get(i).getDataFlowGuard().size(); j++) {
+    			if (app.getComponent().get(0).getGuardedStageModel().getStage().get(i).getDataFlowGuard().get(j).getEventIds() != null) {
+    				
+    				String eventID = app.getComponent().get(0).getGuardedStageModel().getStage().get(i).getDataFlowGuard().get(j).getEventIds();
+    				
+    				if (!alreadyGen.contains(eventID)) {
+    					
+    					EventTypeImpl event = new EventTypeImpl();
+    					event.setId(eventID);
+    					event.setName(eventID);
+        				alreadyGen.add(eventID);
+    				
+    					app.getEventModel().setEvent(event);
+    				}
+    			}
+    		
+    		}
+    		
+    		for (int j = 0; j < app.getComponent().get(0).getGuardedStageModel().getStage().get(i).getFaultLogger().size(); j++) {
+    			if (app.getComponent().get(0).getGuardedStageModel().getStage().get(i).getFaultLogger().get(j).getEventIds() != null) {
+    				
+    				String eventID = app.getComponent().get(0).getGuardedStageModel().getStage().get(i).getFaultLogger().get(j).getEventIds();
+    				
+    				if (!alreadyGen.contains(eventID)) {
+    					
+    					EventTypeImpl event = new EventTypeImpl();
+    					event.setId(eventID);
+    					event.setName(eventID);
+        				alreadyGen.add(eventID);
+    				
+    					app.getEventModel().setEvent(event);
+    				}
+    			}
+    		
+    		}
+    		
+    		if (app.getComponent().get(0).getGuardedStageModel().getStage().get(i).getSubStage().size() != 0) {
+    			substageEventID(app.getComponent().get(0).getGuardedStageModel().getStage().get(i), app);
+    		}
+    	}
+    }
+    
+    public void substageEventID(EObject stage, CompositeApplicationType app) {
+    	
+    	if (stage instanceof StageType) {
+    		
+    		int subStages = ((StageType) stage).getSubStage().size();
+    	
+    		for (int i = 0; i < subStages; i++) {
+    			for (int j = 0; j < ((StageType) stage).getSubStage().get(i).getMilestone().size(); j++) {
+    				if (((StageType) stage).getSubStage().get(i).getMilestone().get(j).getEventIds() != null) {
+    				
+    					String eventID = ((StageType)stage).getSubStage().get(i).getMilestone().get(j).getEventIds();
+    				
+    					if (!alreadyGen.contains(eventID)) {
+    					
+    						EventTypeImpl event = new EventTypeImpl();
+    						event.setId(eventID);
+    						event.setName(eventID);
+    						alreadyGen.add(eventID);
+        				
+    						app.getEventModel().setEvent(event);
+    				}
+    			}
+    		
+    		}
+    		
+    			for (int j = 0; j < ((StageType) stage).getSubStage().get(i).getDataFlowGuard().size(); j++) {
+    				if (((StageType) stage).getSubStage().get(i).getDataFlowGuard().get(j).getEventIds() != null) {
+    				
+    					String eventID = ((StageType) stage).getSubStage().get(i).getDataFlowGuard().get(j).getEventIds();
+    				
+    					if (!alreadyGen.contains(eventID)) {
+    					
+    						EventTypeImpl event = new EventTypeImpl();
+    						event.setId(eventID);
+    						event.setName(eventID);
+        					alreadyGen.add(eventID);
+    				
+        					app.getEventModel().setEvent(event);
+    					}
+    				}
+    		
+    			}
+    			for (int j = 0; j < ((StageType) stage).getSubStage().get(i).getFaultLogger().size(); j++) {
+    				if (((StageType) stage).getSubStage().get(i).getFaultLogger().get(j).getEventIds() != null) {
+    				
+    					String eventID = ((StageType) stage).getSubStage().get(i).getFaultLogger().get(j).getEventIds();
+    				
+    					if (!alreadyGen.contains(eventID)) {
+    					
+    						EventTypeImpl event = new EventTypeImpl();
+    						event.setId(eventID);
+    						event.setName(eventID);
+        					alreadyGen.add(eventID);
+    				
+        					app.getEventModel().setEvent(event);
+    					}
+    				}
+    		
+    			}
+    		
+    			if (((StageType) stage).getSubStage().get(i).getSubStage().size() != 0) {
+    				substageEventID(((StageType)stage).getSubStage().get(i), app);
+    			}
+    		}
+    	}
+    	
+    	else if (stage instanceof SubStageType) {
+ 
+    		int subStages = ((SubStageType) stage).getSubStage().size();
+    	
+    		for (int i = 0; i < subStages; i++) {
+    			for (int j = 0; j < ((SubStageType) stage).getSubStage().get(i).getMilestone().size(); j++) {
+    				if (((SubStageType) stage).getSubStage().get(i).getMilestone().get(j).getEventIds() != null) {
+    				
+    					String eventID = ((SubStageType)stage).getSubStage().get(i).getMilestone().get(j).getEventIds();
+    				
+    					if (!alreadyGen.contains(eventID)) {
+    					
+    						EventTypeImpl event = new EventTypeImpl();
+    						event.setId(eventID);
+    						event.setName(eventID);
+    						alreadyGen.add(eventID);
+        				
+    						app.getEventModel().setEvent(event);
+    				}
+    			}
+    		
+    		}
+    		
+    			for (int j = 0; j < ((SubStageType) stage).getSubStage().get(i).getDataFlowGuard().size(); j++) {
+    				if (((SubStageType) stage).getSubStage().get(i).getDataFlowGuard().get(j).getEventIds() != null) {
+    				
+    					String eventID = ((SubStageType) stage).getSubStage().get(i).getDataFlowGuard().get(j).getEventIds();
+    				
+    					if (!alreadyGen.contains(eventID)) {
+    					
+    						EventTypeImpl event = new EventTypeImpl();
+    						event.setId(eventID);
+    						event.setName(eventID);
+        					alreadyGen.add(eventID);
+    				
+        					app.getEventModel().setEvent(event);
+    					}
+    				}
+    		
+    			}
+    			
+    			for (int j = 0; j < ((SubStageType) stage).getSubStage().get(i).getFaultLogger().size(); j++) {
+    				if (((SubStageType) stage).getSubStage().get(i).getFaultLogger().get(j).getEventIds() != null) {
+    				
+    					String eventID = ((SubStageType) stage).getSubStage().get(i).getFaultLogger().get(j).getEventIds();
+    				
+    					if (!alreadyGen.contains(eventID)) {
+    					
+    						EventTypeImpl event = new EventTypeImpl();
+    						event.setId(eventID);
+    						event.setName(eventID);
+        					alreadyGen.add(eventID);
+    				
+        					app.getEventModel().setEvent(event);
+    					}
+    				}
+    		
+    			}
+    		
+    			if (((SubStageType) stage).getSubStage().get(i).getSubStage().size() != 0) {
+    				substageEventID(((SubStageType)stage).getSubStage().get(i), app);
+    			}
+    		}
+    	}
+    	
+    }
  
 
     public void createStage(CompositeApplicationType app) {
@@ -187,6 +391,8 @@ public class Services {
     
     public boolean stageChecker(CompositeApplicationType app) {
     	
+    	//should I add a check if there are zero stages=
+    	//zero stages is still a valid E-GSM model, but not a very interesting one
     	
     	 for (int j = 0; j < app.getComponent().get(0).getGuardedStageModel().getStage().size(); j++) {
     		 if (app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getDataFlowGuard().size() == 0 || app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getMilestone().size() == 0) {
@@ -216,7 +422,7 @@ public class Services {
     
     public boolean hierarchyChecker(CompositeApplicationType app) {
     	if (app.getComponent().get(0) == null) {
-    		failure = "You have to create the hierarchy.";
+    		failure = "You must create the hierarchy.";
     		return false;
     	}
     	

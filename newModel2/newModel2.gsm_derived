@@ -1,29 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application:CompositeApplicationType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:application="http://siena.ibm.com/model/CompositeApplication" name="nullb0e6">
-  <eventModel>
-    <event id="Event 0b1c"/>
-    <event id="Event d4ec"/>
-    <event id="Event 333f"/>
-    <event id="Event 4bc2"/>
-  </eventModel>
+  <eventModel/>
   <component accessControlModel="AccessControlModel" id="model" name="model">
     <informationModel>
       <dataItem/>
     </informationModel>
     <guardedStageModel>
       <stage id="Stage a3cf" name="Stage d15d">
-        <dataFlowGuard id="Data Flow Guard 1919" name="Data Flow Guard c21e"/>
-        <milestone id="Milestone fc77" name="Milestone aa00">
+        <dataFlowGuard eventIds="1" id="Data Flow Guard 1919" name="Data Flow Guard c21e"/>
+        <milestone eventIds="3" id="Milestone fc77" name="Milestone aa00">
           <condition id="Condition d14d" name="Condition f84e"/>
         </milestone>
-        <subStage id="Nested Stage cec7" name="Nested Stage 19d4">
-          <dataFlowGuard id="Data Flow Guard a5a1" name="Data Flow Guard 19e3"/>
-          <milestone id="Milestone 591f" name="Milestone 5dca">
-            <condition id="Condition dd50" name="Condition 5faf"/>
+        <milestone eventIds="2" id="Milestone 3b95" name="Milestone a319">
+          <condition id="Condition e563" name="Condition 84de"/>
+        </milestone>
+        <subStage id="Nested Stage c98e" name="Nested Stage 2c34">
+          <dataFlowGuard eventIds="4" id="Data Flow Guard adfc" name="Data Flow Guard 3938"/>
+          <subStage id="Nested Stage 493e" name="Nested Stage 2330">
+            <dataFlowGuard eventIds="6" id="Data Flow Guard c14a" name="Data Flow Guard 2852"/>
+            <milestone eventIds="7" id="Milestone 101b" name="Milestone 7f9c">
+              <condition id="Condition d841" name="Condition bcc7"/>
+            </milestone>
+            <faultLogger eventIds="10" id="Fault Logger f424" name="Fault Logger d907"/>
+          </subStage>
+          <faultLogger eventIds="9" id="Fault Logger 5eb9" name="Fault Logger 4b93"/>
+        </subStage>
+        <subStage id="Nested Stage 43eb" name="Nested Stage 03f2">
+          <dataFlowGuard id="Data Flow Guard bc83" name="Data Flow Guard 13ae"/>
+          <milestone id="Milestone d78d" name="Milestone b6f8">
+            <condition id="Condition b4c2" name="Condition 7e7c"/>
           </milestone>
         </subStage>
         <processFlowGuard id="Process Flow Guard a760" name="Process Flow Guard 2e1c"/>
-        <faultLogger id="Fault Logger ad7c" name="Fault Logger 5751"/>
+        <faultLogger eventIds="8" id="Fault Logger ad7c" name="Fault Logger 5751"/>
+      </stage>
+      <stage id="Stage a9eb" name="Stage 2472">
+        <dataFlowGuard eventIds="12" id="Data Flow Guard 284b" name="Data Flow Guard d37f"/>
+        <milestone eventIds="11" id="Milestone 7a55" name="Milestone 32a1">
+          <condition id="Condition 3e31" name="Condition 0ee8"/>
+        </milestone>
+        <subStage id="Nested Stage 18b8" name="Nested Stage d5a1">
+          <dataFlowGuard eventIds="14" id="Data Flow Guard b0d4" name="Data Flow Guard 3821"/>
+          <milestone eventIds="15" id="Milestone 6a8a" name="Milestone bd05">
+            <condition id="Condition ee1d" name="Condition d46e"/>
+          </milestone>
+        </subStage>
+        <faultLogger eventIds="13" id="Fault Logger 8559" name="Fault Logger 4196"/>
       </stage>
     </guardedStageModel>
   </component>

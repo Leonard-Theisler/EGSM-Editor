@@ -72,17 +72,17 @@
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::SubStageType" referenceName="subStage">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="service:generateIDorName()"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:generateIDorName()"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::DataFlowGuardType" referenceName="dataFlowGuard">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="service:generateIDorName()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:generateIDorName()"/>
+                  </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::MilestoneType" referenceName="milestone">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createCondition">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.condition">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="service:generateIDorName()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:generateIDorName()"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="service:generateIDorName()"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:generateIDorName()"/>
                     </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::DataFlowGuardType" referenceName="dataFlowGuard">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="service:generateIDorName()"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:generateIDorName()"/>
                   </subModelOperations>
@@ -212,9 +212,9 @@
         </controls>
       </groups>
       <groups name="EventModel" labelExpression="Group" domainClass="application::CompositeApplicationType" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties:ButtonDescription" name="Create Event" labelExpression="Create Event" helpExpression="Creates an event for this event model" buttonLabelExpression="Create">
+        <controls xsi:type="properties:ButtonDescription" name="Create Event" labelExpression="Generate Event" helpExpression="Generates the eventIDSs for this diagram" buttonLabelExpression="Generate ">
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createEvent()"/>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:generateEvents()"/>
           </initialOperation>
         </controls>
         <controls xsi:type="properties:ListDescription" name="Event List" labelExpression="Events" valueExpression="aql:self.eventModel.event" displayExpression="aql:value.id">
