@@ -32,6 +32,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import com.sun.jdi.event.Event;
+
 import application.ComponentType;
 import application.CompositeApplicationType;
 import application.ConditionType;
@@ -74,6 +76,8 @@ public class Services {
 	String name;
 	String failure = "You must create a model";
 	ArrayList<String> alreadyGen = new ArrayList<String>();
+	ArrayList<String> eventCheck = new ArrayList<String>();
+
 
 	
     public EObject myService(EObject self) {
@@ -81,12 +85,13 @@ public class Services {
     }
     
     
-    public EObject save(EObject self) {
-
+    public EObject save(CompositeApplicationType app) {
+    	
+    	
     	getFilePath();
     	transformXML(inFile, filePath, xslFile);
     	
-		return self;
+		return app;
     }
     
     public boolean applicationChecker(EObject app) {
@@ -158,8 +163,57 @@ public class Services {
     	
     }
     
+    public void makeEvents(CompositeApplicationType app) {
+    	
+    	ArrayList<String> dupeCheck = new ArrayList<String>();
+    	
+    	generateEvents(app);
+    	
+    	   	
+    	if (alreadyGen.size() > 0) {
+    		//eventcheck is the new events
+    		//alreadygen is all of the events
+    		   		
+    		for (int j = 0; j < alreadyGen.size(); j++) {
+        		if ( !eventCheck.contains(alreadyGen.get(j))) {
+        			for (int k = 0; k < app.getEventModel().getEvent().size(); k++) {
+        				if (app.getEventModel().getEvent().get(k).getId() == alreadyGen.get(j)) {
+        					app.getEventModel().getEvent().remove(k);
+        					alreadyGen.remove(j);
+        				}
+        			}
+        		}
+        	}
+    		
+    	}
+    	
+		removeDupes(app, dupeCheck);
+
+    }
+    
+    public void removeDupes(CompositeApplicationType app, ArrayList<String> list) {
+    	for (int i = 0; i < app.getEventModel().getEvent().size(); i++) {
+			if (!list.contains(app.getEventModel().getEvent().get(i).getId())){
+				list.add(app.getEventModel().getEvent().get(i).getId());
+			}
+			else {
+				app.getEventModel().getEvent().remove(i);
+			}
+			if (app.getEventModel().getEvent().get(i).getId() == "") {
+				app.getEventModel().getEvent().remove(i);
+			}
+		}
+    }
+    
     public void generateEvents(CompositeApplicationType app) {
+    	
+    	eventCheck.clear();
+    	
     	int stages = app.getComponent().get(0).getGuardedStageModel().getStage().size();
+    	
+    	if (stages == 0) {
+    		app.getEventModel().getEvent().clear();
+    	}
     	
     	for (int i = 0; i < stages; i++) {
     		for (int j = 0; j < app.getComponent().get(0).getGuardedStageModel().getStage().get(i).getMilestone().size(); j++) {
@@ -167,6 +221,8 @@ public class Services {
     				
     				String eventID = app.getComponent().get(0).getGuardedStageModel().getStage().get(i).getMilestone().get(j).getEventIds();
     				
+    				eventCheck.add(eventID);
+
     				if (!alreadyGen.contains(eventID)) {
     					
     					EventTypeImpl event = new EventTypeImpl();
@@ -185,6 +241,8 @@ public class Services {
     				
     				String eventID = app.getComponent().get(0).getGuardedStageModel().getStage().get(i).getDataFlowGuard().get(j).getEventIds();
     				
+    				eventCheck.add(eventID);
+
     				if (!alreadyGen.contains(eventID)) {
     					
     					EventTypeImpl event = new EventTypeImpl();
@@ -203,6 +261,8 @@ public class Services {
     				
     				String eventID = app.getComponent().get(0).getGuardedStageModel().getStage().get(i).getFaultLogger().get(j).getEventIds();
     				
+    				eventCheck.add(eventID);
+
     				if (!alreadyGen.contains(eventID)) {
     					
     					EventTypeImpl event = new EventTypeImpl();
@@ -234,6 +294,8 @@ public class Services {
     				
     					String eventID = ((StageType)stage).getSubStage().get(i).getMilestone().get(j).getEventIds();
     				
+        				eventCheck.add(eventID);
+
     					if (!alreadyGen.contains(eventID)) {
     					
     						EventTypeImpl event = new EventTypeImpl();
@@ -252,6 +314,8 @@ public class Services {
     				
     					String eventID = ((StageType) stage).getSubStage().get(i).getDataFlowGuard().get(j).getEventIds();
     				
+        				eventCheck.add(eventID);
+
     					if (!alreadyGen.contains(eventID)) {
     					
     						EventTypeImpl event = new EventTypeImpl();
@@ -269,6 +333,8 @@ public class Services {
     				
     					String eventID = ((StageType) stage).getSubStage().get(i).getFaultLogger().get(j).getEventIds();
     				
+        				eventCheck.add(eventID);
+
     					if (!alreadyGen.contains(eventID)) {
     					
     						EventTypeImpl event = new EventTypeImpl();
@@ -298,6 +364,8 @@ public class Services {
     				
     					String eventID = ((SubStageType)stage).getSubStage().get(i).getMilestone().get(j).getEventIds();
     				
+        				eventCheck.add(eventID);
+
     					if (!alreadyGen.contains(eventID)) {
     					
     						EventTypeImpl event = new EventTypeImpl();
@@ -316,6 +384,8 @@ public class Services {
     				
     					String eventID = ((SubStageType) stage).getSubStage().get(i).getDataFlowGuard().get(j).getEventIds();
     				
+        				eventCheck.add(eventID);
+
     					if (!alreadyGen.contains(eventID)) {
     					
     						EventTypeImpl event = new EventTypeImpl();
@@ -334,6 +404,8 @@ public class Services {
     				
     					String eventID = ((SubStageType) stage).getSubStage().get(i).getFaultLogger().get(j).getEventIds();
     				
+        				eventCheck.add(eventID);
+
     					if (!alreadyGen.contains(eventID)) {
     					
     						EventTypeImpl event = new EventTypeImpl();

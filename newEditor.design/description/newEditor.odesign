@@ -214,7 +214,7 @@
       <groups name="EventModel" labelExpression="Group" domainClass="application::CompositeApplicationType" semanticCandidateExpression="var:self">
         <controls xsi:type="properties:ButtonDescription" name="Create Event" labelExpression="Generate Event" helpExpression="Generates the eventIDSs for this diagram" buttonLabelExpression="Generate ">
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:generateEvents()"/>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:makeEvents()"/>
           </initialOperation>
         </controls>
         <controls xsi:type="properties:ListDescription" name="Event List" labelExpression="Events" valueExpression="aql:self.eventModel.event" displayExpression="aql:value.id">
