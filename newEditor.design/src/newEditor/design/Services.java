@@ -429,22 +429,6 @@ public class Services {
     }
  
 
-   /* public void createStage(CompositeApplicationType app) {
-    	
-    	StageTypeImpl stage = new StageTypeImpl(); 
-
-   
-    	id = UUID.randomUUID().toString().substring(0,4);
-    	stage.setName("Stage " + id);
-    	id = UUID.randomUUID().toString().substring(0,4);
-    	stage.setId("Stage " + id);
-    	    	
-    	
-    	app.getComponent().get(0).getGuardedStageModel().setStage(stage);
-    	
-    	populateStage(app);    	
-    	
-    }*/
     
     public boolean createStage(CompositeApplicationType app) {
     	
@@ -466,6 +450,56 @@ public class Services {
     	populateStage(app);    
     	    	
     	return false;
+    }
+    
+    public boolean createStage(StageType stage) {
+    	
+ 	
+    	SubStageTypeImpl subStage = new SubStageTypeImpl(); 
+
+   
+    	id = UUID.randomUUID().toString().substring(0,4);
+    	subStage.setName("Nested Stage " + id);
+    	id = UUID.randomUUID().toString().substring(0,4);
+    	subStage.setId("Nested Stage " + id);
+    	  
+    	
+    	stage.setSubstage(subStage);
+    	
+    	populateStage(stage);
+    	
+    	return false;
+    }
+    
+    public void populateStage(StageType stage) {
+    	
+    	DataFlowGuardType data = new DataFlowGuardTypeImpl();
+    	
+    	data.setId(generateIDorName(data));
+    	data.setName(generateIDorName(data));
+    	
+    	MilestoneType mile = new MilestoneTypeImpl();
+    	
+    	mile.setId(generateIDorName(mile));
+    	mile.setName(generateIDorName(mile));
+    	
+    	ConditionType condition = new ConditionTypeImpl();
+    	
+    	condition.setId(generateIDorName(condition));
+    	condition.setName(generateIDorName(condition));
+
+    	mile.setCondition(condition);
+
+    	
+    	
+    	System.out.println(stage.getSubStage().get(stage.getSubStage().size() -1).getDataFlowGuard());//.setDFG(new DataFlowGuardTypeImpl());
+    	stage.getSubStage().get(stage.getSubStage().size() -1).setDFG(data);
+    	//System.out.println(app.getComponent().get(0).getGuardedStageModel().getStage().get(app.getComponent().get(0).getGuardedStageModel().getStage().size() -1).getDataFlowGuard());//.setDFG(new DataFlowGuardTypeImpl());
+
+    	System.out.println(stage.getSubStage().get(stage.getSubStage().size() -1).getMilestone());
+    	stage.getSubStage().get(stage.getSubStage().size() -1).setMilestone(mile);
+    	//System.out.println(app.getComponent().get(0).getGuardedStageModel().getStage().get(app.getComponent().get(0).getGuardedStageModel().getStage().size() -1).getMilestone());//.setDFG(new DataFlowGuardTypeImpl());
+
     }
     
     public void populateStage(CompositeApplicationType app) {

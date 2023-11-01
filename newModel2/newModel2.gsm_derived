@@ -6,11 +6,17 @@
       <dataItem/>
     </informationModel>
     <guardedStageModel>
-      <stage id="Stage f211" name="Stage fe4a">
-        <dataFlowGuard id="Data Flow Guard 8d4f" name="Data Flow Guard dec9"/>
-        <milestone id="Milestone e31f" name="Milestone 562e">
-          <condition id="Condition 6f0d" name="Condition e3ae"/>
+      <stage id="Stage 6451" name="Stage 769a">
+        <dataFlowGuard id="Data Flow Guard 9947" name="Data Flow Guard 2ca7"/>
+        <milestone id="Milestone abbf" name="Milestone cbeb">
+          <condition id="Condition 063d" name="Condition a280"/>
         </milestone>
+        <subStage id="Nested Stage a004" name="Nested Stage 58fa">
+          <dataFlowGuard eventIds="" id="Data Flow Guard a51b" name="Data Flow Guard b154"/>
+          <milestone eventIds="" id="Milestone cc8f" name="Milestone e00d">
+            <condition id="Condition 5844" name="Condition a8b2"/>
+          </milestone>
+        </subStage>
       </stage>
     </guardedStageModel>
   </component>
