@@ -4,10 +4,14 @@ import javax.swing.JOptionPane;
 
 public class ErrorMessage {
 
-	public ErrorMessage(String s) {
+	public ErrorMessage(String s, boolean error) {
 			
-		JOptionPane.showMessageDialog(null, "Invalid model. " + s,"Invalid model", JOptionPane.ERROR_MESSAGE);
-    
+		if (!error) {
+			JOptionPane.showMessageDialog(null, "Your model is incomplete. " + s,"Warning", JOptionPane.WARNING_MESSAGE);
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "Your model is empty. " + s,"Empty model", JOptionPane.ERROR_MESSAGE);
+		}
 	    
 	}
 }

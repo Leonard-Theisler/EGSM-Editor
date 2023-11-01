@@ -87,7 +87,6 @@ public class Services {
     
     public EObject save(CompositeApplicationType app) {
     	
-    	
     	getFilePath();
     	transformXML(inFile, filePath, xslFile);
     	
@@ -539,39 +538,42 @@ public class Services {
         
     
     public boolean correctnessChecker(CompositeApplicationType app) {
-    	if (!hierarchyChecker(app) || !stageChecker(app)) {
-    		
-    		ErrorMessage EM = new ErrorMessage(failure);
-    	    
+    	if (!hierarchyChecker(app)) {
+    		ErrorMessage EM = new ErrorMessage(failure, true);
     		return false;
     	}
-    	
+    	else if (!stageChecker(app)) {
+    		ErrorMessage EM = new ErrorMessage(failure, false);
+    		return true;
+    	}
     	
     	return true;
     }
     
     public boolean stageChecker(CompositeApplicationType app) {
     	
-    	//should I add a check if there are zero stages=
-    	//zero stages is still a valid E-GSM model, but not a very interesting one
+    	if (app.getComponent().get(0).getGuardedStageModel().getStage().size() == 0) {
+    		failure = "No stages were found.";
+    		return false;
+    	}
     	
     	 for (int j = 0; j < app.getComponent().get(0).getGuardedStageModel().getStage().size(); j++) {
     		 if (app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getDataFlowGuard().size() == 0 || app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getMilestone().size() == 0) {
-    			 failure = "All stages must have at least one data flow guard and one milestone.";
+    			 failure = "All stages should have at least one data flow guard and one milestone.";
     			 return false;
     		 }
     		 else if (app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getMilestone().size() != 0 && app.getComponent().get(0).getGuardedStageModel().getStage().get(0).getMilestone().get(0).getCondition() == null) {
-    			 failure = "All milestones must have a condition.";
+    			 failure = "All milestones should have a condition.";
     			 return false;
     		 }
     		 if (app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getSubStage().size() != 0) {
     			 for (int k = 0; k < app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getSubStage().size(); k++) {
     				 if (app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getSubStage().get(k).getDataFlowGuard().size() == 0 || app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getSubStage().get(k).getMilestone().size() == 0) {
-    					 failure = "All nested stages must have at least one data flow guard and one milestone.";
+    					 failure = "All nested stages should have at least one data flow guard and one milestone.";
     					 return false;
     	    		 }
     				 else if (app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getSubStage().get(k).getMilestone().get(0).getCondition() == null) {
-    					 failure = "All nested stages must have at least one data flow guard and one milestone.";
+    					 failure = "All nested stages should have at least one data flow guard and one milestone.";
     					 return false;
     				 }
     			 }
