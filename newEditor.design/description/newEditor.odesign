@@ -61,7 +61,13 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createStage"/>
+              <firstModelOperations xsi:type="tool_1:If" conditionExpression="service:createStage">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createHierarchy()">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:correctnessChecker()">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createStage"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new nested stage" name="Nested Stage" containerMappings="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@subContainerMappings[name='Sub%20Stage']" iconPath="/newEditor.design/Icons/nestedStage.gif">

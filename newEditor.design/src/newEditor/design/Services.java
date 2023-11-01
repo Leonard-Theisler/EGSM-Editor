@@ -149,6 +149,7 @@ public class Services {
     	
     	app.setEventModel(new EventModelTypeImpl());
     	
+    	System.out.println("we here");
     }
     
     public void createEvent(CompositeApplicationType app) {
@@ -428,9 +429,8 @@ public class Services {
     }
  
 
-    public void createStage(CompositeApplicationType app) {
+   /* public void createStage(CompositeApplicationType app) {
     	
-    	//need to find a way to add dfg and milestones to the stages when they are created
     	StageTypeImpl stage = new StageTypeImpl(); 
 
    
@@ -438,10 +438,65 @@ public class Services {
     	stage.setName("Stage " + id);
     	id = UUID.randomUUID().toString().substring(0,4);
     	stage.setId("Stage " + id);
+    	    	
     	
     	app.getComponent().get(0).getGuardedStageModel().setStage(stage);
     	
+    	populateStage(app);    	
     	
+    }*/
+    
+    public boolean createStage(CompositeApplicationType app) {
+    	
+    	
+    	if (!hierarchyChecker(app)) {
+    		return true;
+    	}
+    	
+    	StageTypeImpl stage = new StageTypeImpl(); 
+
+   
+    	id = UUID.randomUUID().toString().substring(0,4);
+    	stage.setName("Stage " + id);
+    	id = UUID.randomUUID().toString().substring(0,4);
+    	stage.setId("Stage " + id);
+    	    	
+    	app.getComponent().get(0).getGuardedStageModel().setStage(stage);
+    	
+    	populateStage(app);    
+    	    	
+    	return false;
+    }
+    
+    public void populateStage(CompositeApplicationType app) {
+    	
+    	DataFlowGuardType data = new DataFlowGuardTypeImpl();
+    	
+    	data.setId(generateIDorName(data));
+    	data.setName(generateIDorName(data));
+    	
+    	MilestoneType mile = new MilestoneTypeImpl();
+    	
+    	mile.setId(generateIDorName(mile));
+    	mile.setName(generateIDorName(mile));
+    	
+    	ConditionType condition = new ConditionTypeImpl();
+    	
+    	condition.setId(generateIDorName(condition));
+    	condition.setName(generateIDorName(condition));
+
+    	mile.setCondition(condition);
+
+    	
+    	
+    	System.out.println(app.getComponent().get(0).getGuardedStageModel().getStage().get(app.getComponent().get(0).getGuardedStageModel().getStage().size() -1).getDataFlowGuard());//.setDFG(new DataFlowGuardTypeImpl());
+    	app.getComponent().get(0).getGuardedStageModel().getStage().get(app.getComponent().get(0).getGuardedStageModel().getStage().size() -1).setDFG(data);
+    	//System.out.println(app.getComponent().get(0).getGuardedStageModel().getStage().get(app.getComponent().get(0).getGuardedStageModel().getStage().size() -1).getDataFlowGuard());//.setDFG(new DataFlowGuardTypeImpl());
+
+    	System.out.println(app.getComponent().get(0).getGuardedStageModel().getStage().get(app.getComponent().get(0).getGuardedStageModel().getStage().size() -1).getMilestone());//.setDFG(new DataFlowGuardTypeImpl());
+    	app.getComponent().get(0).getGuardedStageModel().getStage().get(app.getComponent().get(0).getGuardedStageModel().getStage().size() -1).setMilestone(mile);
+    	//System.out.println(app.getComponent().get(0).getGuardedStageModel().getStage().get(app.getComponent().get(0).getGuardedStageModel().getStage().size() -1).getMilestone());//.setDFG(new DataFlowGuardTypeImpl());
+
     }
     
     public ComponentType getComponent(CompositeApplicationType app) {
@@ -493,7 +548,7 @@ public class Services {
     }
     
     public boolean hierarchyChecker(CompositeApplicationType app) {
-    	if (app.getComponent().get(0) == null) {
+    	if (app.getComponent().size() == 0) {
     		failure = "You must create the hierarchy.";
     		return false;
     	}
