@@ -64,10 +64,11 @@ import application.impl.EventTypeImpl;
  */
 public class Services {
 	
-	
+	//keep the absolute path, change to relative when deploying
 	String filePath;
 	String inFile = "C:\\Users\\leona\\git\\EGSM-Editor\\newModel2\\newModel2.gsm_derived";
 	String xslFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2siena.xsl";
+	String xsdFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2xsd.xsl";
     
 	int stagenum = 0;
 	int eventnum = 0;
@@ -85,10 +86,16 @@ public class Services {
     }
     
     
+    
     public EObject save(CompositeApplicationType app) {
     	
     	getFilePath();
-    	transformXML(inFile, filePath, xslFile);
+    	transformXML(inFile, filePath + ".xml", xslFile);
+    	transformXML(inFile, filePath + ".xsd", xsdFile);
+    	
+    	app.getComponent().get(0).getInformationModel().getDataItem().setSchemaUri("filePath.xsd");
+
+
     	
 		return app;
     }
@@ -144,11 +151,15 @@ public class Services {
     	app.getComponent().get(0).setGuardedStageModel(new GuardedStageModelTypeImpl());
     	
     	app.getComponent().get(0).setInformationModel(new InformationModelTypeImpl());
-    	app.getComponent().get(0).getInformationModel().setDataItem(new DataItemTypeImpl());
+    	app.getComponent().get(0).getInformationModel().setId("infoModel");
+    	app.getComponent().get(0).getInformationModel().setRootDataItemId("infoModel");
+    	app.getComponent().get(0).getInformationModel().setDataItem(new DataItemTypeImpl());    	
+    	app.getComponent().get(0).getInformationModel().getDataItem().setId("infoModel");
+    	app.getComponent().get(0).getInformationModel().getDataItem().setRootElement("infoModel");
+
     	
     	app.setEventModel(new EventModelTypeImpl());
     	
-    	System.out.println("we here");
     }
     
     public void createEvent(CompositeApplicationType app) {
@@ -546,16 +557,21 @@ public class Services {
     		ErrorMessage EM = new ErrorMessage(failure, false);
     		return true;
     	}
+    	else if (app.getComponent().get(0).getGuardedStageModel().getStage().size() == 0) {
+    		failure = "No stages were found.";
+    		ErrorMessage EM = new ErrorMessage(failure, false);
+    		return true;
+    	}
     	
     	return true;
     }
     
     public boolean stageChecker(CompositeApplicationType app) {
     	
-    	if (app.getComponent().get(0).getGuardedStageModel().getStage().size() == 0) {
+    	/*if (app.getComponent().get(0).getGuardedStageModel().getStage().size() == 0) {
     		failure = "No stages were found.";
     		return false;
-    	}
+    	}*/
     	
     	 for (int j = 0; j < app.getComponent().get(0).getGuardedStageModel().getStage().size(); j++) {
     		 if (app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getDataFlowGuard().size() == 0 || app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getMilestone().size() == 0) {
@@ -598,13 +614,16 @@ public class Services {
         JFileChooser fileExplorer = new JFileChooser();
 
         fileExplorer.setDialogTitle("Save to");
-    	FileNameExtensionFilter xmlFilter = new FileNameExtensionFilter("xml files (*.xml)", "xml");
+    	FileNameExtensionFilter xmlFilter = new FileNameExtensionFilter("xml files (*.xml)", "xml", "xsd files (*.xsd)", "xsd");
     	fileExplorer.setFileFilter(xmlFilter);
     	
         fileExplorer.showSaveDialog(null);
         
         filePath = fileExplorer.getSelectedFile().toString();
-        if (!filePath.contains(".xml")) {filePath += ".xml";}; 
+        System.out.println(filePath);
+        System.out.println(filePath.contains(".xml"));
+        if (filePath.contains(".xml")) {filePath = filePath.replace(".xml", "");}; 
+        if (filePath.contains(".xsd")) {filePath = filePath.replace(".xsd", "");}; 
 
         return filePath;
    

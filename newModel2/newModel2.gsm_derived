@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application:CompositeApplicationType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:application="http://siena.ibm.com/model/CompositeApplication" name="Application">
-  <eventModel/>
+  <eventModel>
+    <event id="2" name="2"/>
+    <event id="1" name="1"/>
+  </eventModel>
   <component accessControlModel="AccessControlModel" id="model" name="model">
-    <informationModel>
-      <dataItem/>
+    <informationModel id="infoModel" rootDataItemId="infoModel">
+      <dataItem schemaUri="filePath.xsd"/>
     </informationModel>
     <guardedStageModel>
-      <stage id="Stage a261" name="Stage 59c6">
-        <dataFlowGuard id="Data Flow Guard 0968" name="Data Flow Guard f734"/>
-        <milestone id="Milestone 5b42" name="Milestone a05e">
-          <condition id="Condition 4694" name="Condition 8bfd"/>
+      <stage id="Stage 2483" name="Stage ae09">
+        <dataFlowGuard eventIds="1" id="Data Flow Guard 5c8d" name="Data Flow Guard f5ae"/>
+        <milestone eventIds="2" id="Milestone bbab" name="Milestone 2035">
+          <condition id="Condition 7fe3" name="Condition e98e"/>
         </milestone>
-        <subStage id="Nested Stage 3135" name="Nested Stage b583">
-          <dataFlowGuard id="Data Flow Guard 48c6" name="Data Flow Guard 33d1"/>
-          <milestone id="Milestone fb8c" name="Milestone 0623">
-            <condition id="Condition f938" name="Condition 8691"/>
-          </milestone>
-        </subStage>
       </stage>
     </guardedStageModel>
   </component>
