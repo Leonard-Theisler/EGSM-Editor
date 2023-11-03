@@ -61,13 +61,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:If" conditionExpression="service:createStage">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createHierarchy()">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:stageChecker()">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createStage"/>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createElement"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new data flow guard&#xD;&#xA;" name="Data Flow Guard" nodeMappings="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Data%20Flow%20Guard']" iconPath="/newEditor.design/Icons/dataFlowGuard.gif">
@@ -100,7 +94,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="application::MilestoneType" referenceName="milestone">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createCondition">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createElement()">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.condition">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="service:generateIDorName()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:generateIDorName()"/>

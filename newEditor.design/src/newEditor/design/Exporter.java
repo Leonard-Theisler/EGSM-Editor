@@ -1,0 +1,99 @@
+package newEditor.design;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Templates;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+
+import application.CompositeApplicationType;
+
+public class Exporter {
+	
+	//keep the absolute path, change to relative when deploying
+	String filePath;
+	String inFile = "C:\\Users\\leona\\git\\EGSM-Editor\\newModel2\\newModel2.gsm_derived";
+	String xslFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2siena.xsl";
+	String xsdFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2xsd.xsl";
+	
+	
+	public void export(CompositeApplicationType app) {
+		
+		getFilePath();
+    	transformXML(inFile, filePath + ".xml", xslFile);
+    	transformXML(inFile, filePath + ".xsd", xsdFile);
+    	
+    	app.getComponent().get(0).getInformationModel().getDataItem().setSchemaUri("filePath.xsd");
+
+
+ 	}
+	// Opens the file explorer and gets the filename and path from the user   
+    private String getFilePath() {
+        
+        JFileChooser fileExplorer = new JFileChooser();
+
+        fileExplorer.setDialogTitle("Save to");
+    	FileNameExtensionFilter xmlFilter = new FileNameExtensionFilter("xml files (*.xml)", "xml", "xsd files (*.xsd)", "xsd");
+    	fileExplorer.setFileFilter(xmlFilter);
+    	
+        fileExplorer.showSaveDialog(null);
+        
+        filePath = fileExplorer.getSelectedFile().toString();
+        System.out.println(filePath);
+        System.out.println(filePath.contains(".xml"));
+        if (filePath.contains(".xml")) {filePath = filePath.replace(".xml", "");}; 
+        if (filePath.contains(".xsd")) {filePath = filePath.replace(".xsd", "");}; 
+
+        return filePath;
+   
+   }
+    
+	
+	/* This method was implemented by Giovanni Meroni and I have received permission to reuse it for this project
+     * The code can be found here: https://bitbucket.org/polimiisgroup/egsmengine/src/master/ 
+	 */
+	private void transformXML(String inFilename, String outFilename, String xslFilename){
+		try {
+            // Create transformer factory
+            TransformerFactory factory = TransformerFactory.newInstance();
+
+            // Use the factory to create a template containing the xsl file
+            Templates template = factory.newTemplates(new StreamSource(
+                new FileInputStream(xslFilename)));
+            // Use the template to create a transformer
+            Transformer xformer = template.newTransformer();
+            // Prepare the input and output files
+            Source source = new StreamSource(new FileInputStream(inFilename));
+            Result result = new StreamResult(new FileOutputStream(outFilename));
+
+            // Apply the xsl file to the source file and write the result to the output file
+            xformer.transform(source, result);
+            
+        } catch (FileNotFoundException e) {
+        	
+        } catch (TransformerConfigurationException e) {
+            // An error occurred in the XSL file
+        } catch (TransformerException e) {
+            // An error occurred while applying the XSL file
+            // Get location of error in input file
+            /*
+        	SourceLocator locator = e.getLocator();
+            int col = locator.getColumnNumber();
+            int line = locator.getLineNumber();
+            String publicId = locator.getPublicId();
+            String systemId = locator.getSystemId();
+            */
+        }
+	}
+
+}

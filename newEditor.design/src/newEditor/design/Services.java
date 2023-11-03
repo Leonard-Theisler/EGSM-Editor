@@ -64,11 +64,10 @@ import application.impl.EventTypeImpl;
  */
 public class Services {
 	
-	//keep the absolute path, change to relative when deploying
-	String filePath;
-	String inFile = "C:\\Users\\leona\\git\\EGSM-Editor\\newModel2\\newModel2.gsm_derived";
-	String xslFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2siena.xsl";
-	String xsdFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2xsd.xsl";
+	Exporter exporter = new Exporter();
+	UUIDFactory idFactory = new UUIDFactory();
+	Checker checker = new Checker();
+	ModelElementFactory eFactory = new ModelElementFactory(); 
     
 	int stagenum = 0;
 	int eventnum = 0;
@@ -87,80 +86,37 @@ public class Services {
     
     
     
-    public EObject save(CompositeApplicationType app) {
+    public void save(CompositeApplicationType app) {
     	
-    	getFilePath();
-    	transformXML(inFile, filePath + ".xml", xslFile);
-    	transformXML(inFile, filePath + ".xsd", xsdFile);
-    	
-    	app.getComponent().get(0).getInformationModel().getDataItem().setSchemaUri("filePath.xsd");
+    	exporter.export(app);
 
-
-    	
-		return app;
-    }
-    
-    public boolean applicationChecker(EObject app) {
-    	if (app instanceof CompositeApplicationType) {
-    		return true;
-    	}
-    	return false;
-    }
-    
-  
-    
-    
-  
-    public void createCondition(MilestoneType milestone) {
-    	milestone.setCondition(new ConditionTypeImpl());
-    	
     }
     
     public String generateIDorName(EObject element) {
     	
-    	id = UUID.randomUUID().toString().substring(0,4);
-
-    	if (element instanceof SubStageType) {
-    		name = "Nested Stage ";
-    	}
-    	else if (element instanceof DataFlowGuardType) {
-    		name = "Data Flow Guard ";
-    	}
-    	else if (element instanceof ProcessFlowGuardType) {
-    		name = "Process Flow Guard ";
-    	}
-    	else if (element instanceof MilestoneType) {
-    		name = "Milestone ";
-    	}
-    	else if (element instanceof FaultLoggerType) {
-    		name = "Fault Logger ";
-    	}
-    	else if (element instanceof ConditionType) {
-    		name = "Condition ";
-    	}
+    	return idFactory.getUUID(element);
     	
-    	return name + id;
     }
     
-    public void createHierarchy(CompositeApplicationType app) {
-    	app.setComponent(new ComponentTypeImpl());
-    	app.getComponent().get(0).setId("model");
-    	app.getComponent().get(0).setName("model");
-    	app.getComponent().get(0).setAccessControlModel("AccessControlModel");
+    
+    public boolean applicationChecker(EObject app) {
     	
-    	app.getComponent().get(0).setGuardedStageModel(new GuardedStageModelTypeImpl());
-    	
-    	app.getComponent().get(0).setInformationModel(new InformationModelTypeImpl());
-    	app.getComponent().get(0).getInformationModel().setId("infoModel");
-    	app.getComponent().get(0).getInformationModel().setRootDataItemId("infoModel");
-    	app.getComponent().get(0).getInformationModel().setDataItem(new DataItemTypeImpl());    	
-    	app.getComponent().get(0).getInformationModel().getDataItem().setId("infoModel");
-    	app.getComponent().get(0).getInformationModel().getDataItem().setRootElement("infoModel");
-
-    	
-    	app.setEventModel(new EventModelTypeImpl());
+    	return checker.checkApplication(app);
     	
     }
+    
+    public boolean correctnessChecker(CompositeApplicationType app) {
+    	
+    	return checker.checkCorrectness(app);
+    	
+    }
+    
+    public void createElement(EObject element) {
+    	
+    	eFactory.EGSMfactory(element);
+    	
+    }
+      
     
     public void createEvent(CompositeApplicationType app) {
     	    	
@@ -438,239 +394,15 @@ public class Services {
     	
     }
  
-
     
-    public boolean createStage(CompositeApplicationType app) {
-    	
-    	
-    	if (!hierarchyChecker(app)) {
-    		return true;
-    	}
-    	
-    	StageTypeImpl stage = new StageTypeImpl(); 
-
-   
-    	id = UUID.randomUUID().toString().substring(0,4);
-    	stage.setName("Stage " + id);
-    	id = UUID.randomUUID().toString().substring(0,4);
-    	stage.setId("Stage " + id);
-    	    	
-    	app.getComponent().get(0).getGuardedStageModel().setStage(stage);
-    	
-    	populateStage(app);    
-    	    	
-    	return false;
-    }
-    
-    public boolean createStage(StageType stage) {
-    	
- 	
-    	SubStageTypeImpl subStage = new SubStageTypeImpl(); 
-
-   
-    	id = UUID.randomUUID().toString().substring(0,4);
-    	subStage.setName("Nested Stage " + id);
-    	id = UUID.randomUUID().toString().substring(0,4);
-    	subStage.setId("Nested Stage " + id);
-    	  
-    	
-    	stage.setSubstage(subStage);
-    	
-    	populateStage(stage);
-    	
-    	return false;
-    }
-    
-    public void populateStage(StageType stage) {
-    	
-    	DataFlowGuardType data = new DataFlowGuardTypeImpl();
-    	
-    	data.setId(generateIDorName(data));
-    	data.setName(generateIDorName(data));
-    	
-    	MilestoneType mile = new MilestoneTypeImpl();
-    	
-    	mile.setId(generateIDorName(mile));
-    	mile.setName(generateIDorName(mile));
-    	
-    	ConditionType condition = new ConditionTypeImpl();
-    	
-    	condition.setId(generateIDorName(condition));
-    	condition.setName(generateIDorName(condition));
-
-    	mile.setCondition(condition);
-
-    	
-    	
-    	System.out.println(stage.getSubStage().get(stage.getSubStage().size() -1).getDataFlowGuard());//.setDFG(new DataFlowGuardTypeImpl());
-    	stage.getSubStage().get(stage.getSubStage().size() -1).setDFG(data);
-    	//System.out.println(app.getComponent().get(0).getGuardedStageModel().getStage().get(app.getComponent().get(0).getGuardedStageModel().getStage().size() -1).getDataFlowGuard());//.setDFG(new DataFlowGuardTypeImpl());
-
-    	System.out.println(stage.getSubStage().get(stage.getSubStage().size() -1).getMilestone());
-    	stage.getSubStage().get(stage.getSubStage().size() -1).setMilestone(mile);
-    	//System.out.println(app.getComponent().get(0).getGuardedStageModel().getStage().get(app.getComponent().get(0).getGuardedStageModel().getStage().size() -1).getMilestone());//.setDFG(new DataFlowGuardTypeImpl());
-
-    }
-    
-    public void populateStage(CompositeApplicationType app) {
-    	
-    	DataFlowGuardType data = new DataFlowGuardTypeImpl();
-    	
-    	data.setId(generateIDorName(data));
-    	data.setName(generateIDorName(data));
-    	
-    	MilestoneType mile = new MilestoneTypeImpl();
-    	
-    	mile.setId(generateIDorName(mile));
-    	mile.setName(generateIDorName(mile));
-    	
-    	ConditionType condition = new ConditionTypeImpl();
-    	
-    	condition.setId(generateIDorName(condition));
-    	condition.setName(generateIDorName(condition));
-
-    	mile.setCondition(condition);
-
-    	
-    	
-    	System.out.println(app.getComponent().get(0).getGuardedStageModel().getStage().get(app.getComponent().get(0).getGuardedStageModel().getStage().size() -1).getDataFlowGuard());//.setDFG(new DataFlowGuardTypeImpl());
-    	app.getComponent().get(0).getGuardedStageModel().getStage().get(app.getComponent().get(0).getGuardedStageModel().getStage().size() -1).setDFG(data);
-    	//System.out.println(app.getComponent().get(0).getGuardedStageModel().getStage().get(app.getComponent().get(0).getGuardedStageModel().getStage().size() -1).getDataFlowGuard());//.setDFG(new DataFlowGuardTypeImpl());
-
-    	System.out.println(app.getComponent().get(0).getGuardedStageModel().getStage().get(app.getComponent().get(0).getGuardedStageModel().getStage().size() -1).getMilestone());//.setDFG(new DataFlowGuardTypeImpl());
-    	app.getComponent().get(0).getGuardedStageModel().getStage().get(app.getComponent().get(0).getGuardedStageModel().getStage().size() -1).setMilestone(mile);
-    	//System.out.println(app.getComponent().get(0).getGuardedStageModel().getStage().get(app.getComponent().get(0).getGuardedStageModel().getStage().size() -1).getMilestone());//.setDFG(new DataFlowGuardTypeImpl());
-
-    }
-    
-    public ComponentType getComponent(CompositeApplicationType app) {
+    /*public ComponentType getComponent(CompositeApplicationType app) {
     	return app.getComponent().get(0);
-    }
+    }*/
         
     
-    public boolean correctnessChecker(CompositeApplicationType app) {
-    	if (!hierarchyChecker(app)) {
-    		ErrorMessage EM = new ErrorMessage(failure, true);
-    		return false;
-    	}
-    	else if (!stageChecker(app)) {
-    		ErrorMessage EM = new ErrorMessage(failure, false);
-    		return true;
-    	}
-    	else if (app.getComponent().get(0).getGuardedStageModel().getStage().size() == 0) {
-    		failure = "No stages were found.";
-    		ErrorMessage EM = new ErrorMessage(failure, false);
-    		return true;
-    	}
-    	
-    	return true;
-    }
-    
-    public boolean stageChecker(CompositeApplicationType app) {
-    	
-    	/*if (app.getComponent().get(0).getGuardedStageModel().getStage().size() == 0) {
-    		failure = "No stages were found.";
-    		return false;
-    	}*/
-    	
-    	 for (int j = 0; j < app.getComponent().get(0).getGuardedStageModel().getStage().size(); j++) {
-    		 if (app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getDataFlowGuard().size() == 0 || app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getMilestone().size() == 0) {
-    			 failure = "All stages should have at least one data flow guard and one milestone.";
-    			 return false;
-    		 }
-    		 else if (app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getMilestone().size() != 0 && app.getComponent().get(0).getGuardedStageModel().getStage().get(0).getMilestone().get(0).getCondition() == null) {
-    			 failure = "All milestones should have a condition.";
-    			 return false;
-    		 }
-    		 if (app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getSubStage().size() != 0) {
-    			 for (int k = 0; k < app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getSubStage().size(); k++) {
-    				 if (app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getSubStage().get(k).getDataFlowGuard().size() == 0 || app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getSubStage().get(k).getMilestone().size() == 0) {
-    					 failure = "All nested stages should have at least one data flow guard and one milestone.";
-    					 return false;
-    	    		 }
-    				 else if (app.getComponent().get(0).getGuardedStageModel().getStage().get(j).getSubStage().get(k).getMilestone().get(0).getCondition() == null) {
-    					 failure = "All nested stages should have at least one data flow guard and one milestone.";
-    					 return false;
-    				 }
-    			 }
-    		 }
-    	 }
-    	 
-    	 return true;	
-    }
-    
-    public boolean hierarchyChecker(CompositeApplicationType app) {
-    	if (app.getComponent().size() == 0) {
-    		failure = "You must create the hierarchy.";
-    		return false;
-    	}
-    	
-    	return true;
-    }
-
-    // Opens the file explorer and gets the filename and path from the user   
-    public String getFilePath() {
-        
-        JFileChooser fileExplorer = new JFileChooser();
-
-        fileExplorer.setDialogTitle("Save to");
-    	FileNameExtensionFilter xmlFilter = new FileNameExtensionFilter("xml files (*.xml)", "xml", "xsd files (*.xsd)", "xsd");
-    	fileExplorer.setFileFilter(xmlFilter);
-    	
-        fileExplorer.showSaveDialog(null);
-        
-        filePath = fileExplorer.getSelectedFile().toString();
-        System.out.println(filePath);
-        System.out.println(filePath.contains(".xml"));
-        if (filePath.contains(".xml")) {filePath = filePath.replace(".xml", "");}; 
-        if (filePath.contains(".xsd")) {filePath = filePath.replace(".xsd", "");}; 
-
-        return filePath;
-   
-   }
-    
-	
-	/* This method was implemented by Giovanni Meroni and I have received permission to reuse it for this project
-     * The code can be found here: https://bitbucket.org/polimiisgroup/egsmengine/src/master/ 
-	 */
-	public void transformXML(String inFilename, String outFilename, String xslFilename){
-		try {
-            // Create transformer factory
-            TransformerFactory factory = TransformerFactory.newInstance();
-
-            // Use the factory to create a template containing the xsl file
-            Templates template = factory.newTemplates(new StreamSource(
-                new FileInputStream(xslFilename)));
-            // Use the template to create a transformer
-            Transformer xformer = template.newTransformer();
-            // Prepare the input and output files
-            Source source = new StreamSource(new FileInputStream(inFilename));
-            Result result = new StreamResult(new FileOutputStream(outFilename));
-
-            // Apply the xsl file to the source file and write the result to the output file
-            xformer.transform(source, result);
-            
-        } catch (FileNotFoundException e) {
-        	
-        } catch (TransformerConfigurationException e) {
-            // An error occurred in the XSL file
-        } catch (TransformerException e) {
-            // An error occurred while applying the XSL file
-            // Get location of error in input file
-            /*
-        	SourceLocator locator = e.getLocator();
-            int col = locator.getColumnNumber();
-            int line = locator.getLineNumber();
-            String publicId = locator.getPublicId();
-            String systemId = locator.getSystemId();
-            */
-        }
-	}
-	
-
     
     
-    
-    
+      
+       
     
 }
