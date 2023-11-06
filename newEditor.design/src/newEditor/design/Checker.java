@@ -44,7 +44,7 @@ public class Checker {
     } 
 	
 	
-	private boolean stageChecker(CompositeApplicationType app) {
+	public boolean stageChecker(CompositeApplicationType app) {
     	
 	   	
    	 for (int j = 0; j < app.getComponent().get(0).getGuardedStageModel().getStage().size(); j++) {

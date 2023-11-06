@@ -38,10 +38,11 @@ public class ModelElementFactory {
 	ArrayList<String> eventCheck = new ArrayList<String>();
 	
 	
-	public void EGSMfactory(EObject element) {
+	public boolean EGSMfactory(EObject element) {
 		
 		if (element instanceof CompositeApplicationType) {
-			createStage((CompositeApplicationType) element);
+			//createStage((CompositeApplicationType) element);
+			return true;
 		}
 		else if (element instanceof StageType) {
 			createStage((StageType) element);
@@ -52,13 +53,17 @@ public class ModelElementFactory {
 		else if (element instanceof MilestoneType) {
 			createCondition((MilestoneType) element);
 		}
+		
+		return false;
 	}
 
-	private void createStage(CompositeApplicationType app) {
+	public boolean createStage(CompositeApplicationType app) {
     	
     	
     	if (!check.hierarchyChecker(app)) {
-    		createHierarchy(app);
+    		//createHierarchy(app);
+    		System.out.println("hierarchy");
+    		return true;
     	}
     	
     	StageTypeImpl stage = new StageTypeImpl(); 
@@ -68,7 +73,9 @@ public class ModelElementFactory {
   	
     	app.getComponent().get(0).getGuardedStageModel().setStage(stage);
     	
-    	populateStage(app);    
+    	populateStage(app); 
+    	
+    	return false;
     	    	
     }
 	

@@ -61,7 +61,15 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createElement"/>
+              <firstModelOperations xsi:type="tool_1:If" conditionExpression="service:createElement">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createStage">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createHierarchy">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:stageChecker">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createStage"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new data flow guard&#xD;&#xA;" name="Data Flow Guard" nodeMappings="//@ownedViewpoints[name='newModel']/@ownedRepresentations[name='newModel']/@defaultLayer/@containerMappings[name='Stage']/@borderedNodeMappings[name='Data%20Flow%20Guard']" iconPath="/newEditor.design/Icons/dataFlowGuard.gif">

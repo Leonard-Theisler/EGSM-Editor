@@ -111,12 +111,29 @@ public class Services {
     	
     }
     
-    public void createElement(EObject element) {
+    public boolean createElement(EObject element) {
     	
-    	eFactory.EGSMfactory(element);
+    	return eFactory.EGSMfactory(element);
+    	
+    }
+    
+    public void createHierarchy(CompositeApplicationType app) {
+    	
+    	eFactory.createHierarchy(app);
+    	
+    }
+    
+    public boolean createStage(CompositeApplicationType app) {
+    	
+    	return eFactory.createStage(app);
     	
     }
       
+    public void stageChecker(CompositeApplicationType app) {
+    	
+    	checker.stageChecker(app);
+    	
+    }
     
     public void createEvents(CompositeApplicationType app) {
     	
