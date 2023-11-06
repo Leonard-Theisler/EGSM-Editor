@@ -61,8 +61,6 @@ public class ModelElementFactory {
     	
     	
     	if (!check.hierarchyChecker(app)) {
-    		//createHierarchy(app);
-    		System.out.println("hierarchy");
     		return true;
     	}
     	

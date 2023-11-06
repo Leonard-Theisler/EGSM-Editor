@@ -3,13 +3,13 @@
   <eventModel/>
   <component accessControlModel="AccessControlModel" id="model" name="model">
     <informationModel id="infoModel" rootDataItemId="infoModel">
-      <dataItem id="infoModel" rootElement="infoModel"/>
+      <dataItem id="infoModel" rootElement="infoModel" schemaUri="filePath.xsd"/>
     </informationModel>
     <guardedStageModel>
-      <stage id="Stage b1b5" name="Stage ff7a">
-        <dataFlowGuard id="Data Flow Guard ff15" name="Data Flow Guard 4b7a"/>
-        <milestone id="Milestone 0231" name="Milestone d4c6">
-          <condition id="Condition 7cce" name="Condition 9a34"/>
+      <stage id="Stage 7db8" name="Stage 036e">
+        <dataFlowGuard id="Data Flow Guard da0a" name="Data Flow Guard 876e"/>
+        <milestone id="Milestone 3b95" name="Milestone a02d">
+          <condition id="Condition e604" name="Condition db85"/>
         </milestone>
       </stage>
     </guardedStageModel>
