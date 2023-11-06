@@ -62,7 +62,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:If" conditionExpression="service:createElement">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createStage">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="service:createStage">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createHierarchy">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:stageChecker">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createStage"/>
