@@ -37,6 +37,7 @@ public class ModelElementFactory {
 	ArrayList<String> alreadyGen = new ArrayList<String>();
 	ArrayList<String> eventCheck = new ArrayList<String>();
 	
+	
 	public void EGSMfactory(EObject element) {
 		
 		if (element instanceof CompositeApplicationType) {
@@ -44,6 +45,9 @@ public class ModelElementFactory {
 		}
 		else if (element instanceof StageType) {
 			createStage((StageType) element);
+		}
+		else if (element instanceof SubStageType) {
+			createStage((SubStageType) element);
 		}
 		else if (element instanceof MilestoneType) {
 			createCondition((MilestoneType) element);
@@ -69,6 +73,23 @@ public class ModelElementFactory {
     }
 	
 	private boolean createStage(StageType stage) {
+    	
+	 	
+    	SubStageTypeImpl subStage = new SubStageTypeImpl(); 
+
+   
+    	subStage.setId(idmaker.getUUID(subStage));
+    	subStage.setName(idmaker.getUUID(subStage));
+    	  
+    	
+    	stage.setSubstage(subStage);
+    	
+    	populateStage(stage);
+    	
+    	return false;
+    }
+	
+	private boolean createStage(SubStageType stage) {
     	
 	 	
     	SubStageTypeImpl subStage = new SubStageTypeImpl(); 
@@ -116,6 +137,35 @@ public class ModelElementFactory {
 	    }
 	 
 	 private void populateStage(StageType stage) {
+	    	
+	    	DataFlowGuardType data = new DataFlowGuardTypeImpl();
+	    	
+	    	data.setId(idmaker.getUUID(data));
+	    	data.setName(idmaker.getUUID(data));
+	    	
+	    	MilestoneType mile = new MilestoneTypeImpl();
+	    	
+	    	mile.setId(idmaker.getUUID(mile));
+	    	mile.setName(idmaker.getUUID(mile));
+	    	
+	    	ConditionType condition = new ConditionTypeImpl();
+	    	
+	    	condition.setId(idmaker.getUUID(condition));
+	    	condition.setName(idmaker.getUUID(condition));
+
+	    	mile.setCondition(condition);
+
+	    	
+	    	
+	    	System.out.println(stage.getSubStage().get(stage.getSubStage().size() -1).getDataFlowGuard());
+	    	stage.getSubStage().get(stage.getSubStage().size() -1).setDFG(data);
+
+	    	System.out.println(stage.getSubStage().get(stage.getSubStage().size() -1).getMilestone());
+	    	stage.getSubStage().get(stage.getSubStage().size() -1).setMilestone(mile);
+
+	    }
+	 
+	 private void populateStage(SubStageType stage) {
 	    	
 	    	DataFlowGuardType data = new DataFlowGuardTypeImpl();
 	    	

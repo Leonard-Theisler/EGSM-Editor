@@ -29,6 +29,20 @@
           <milestone id="Milestone 8f98" name="Milestone 0867">
             <condition id="Condition 5a31" name="Condition ee67"/>
           </milestone>
+          <processFlowGuard id="Process Flow Guard 4818" name="Process Flow Guard e793"/>
+          <faultLogger id="Fault Logger 952c" name="Fault Logger 0a09"/>
+        </subStage>
+      </stage>
+      <stage id="Stage 02fd" name="Stage 615e">
+        <dataFlowGuard id="Data Flow Guard 3d1b" name="Data Flow Guard be1f"/>
+        <milestone id="Milestone 281b" name="Milestone 0c4f">
+          <condition id="Condition 02f3" name="Condition 336e"/>
+        </milestone>
+        <subStage id="Nested Stage 2c9f" name="Nested Stage f149">
+          <dataFlowGuard id="Data Flow Guard c5da" name="Data Flow Guard b313"/>
+          <milestone id="Milestone 8156" name="Milestone ae34">
+            <condition id="Condition bd26" name="Condition c082"/>
+          </milestone>
         </subStage>
       </stage>
     </guardedStageModel>
