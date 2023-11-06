@@ -3,17 +3,33 @@
   <eventModel>
     <event id="2" name="2"/>
     <event id="1" name="1"/>
+    <event id="5" name="5"/>
+    <event id="4" name="4"/>
+    <event id="3" name="3"/>
   </eventModel>
   <component accessControlModel="AccessControlModel" id="model" name="model">
     <informationModel id="infoModel" rootDataItemId="infoModel">
       <dataItem schemaUri="filePath.xsd"/>
     </informationModel>
     <guardedStageModel>
-      <stage id="Stage 2483" name="Stage ae09">
-        <dataFlowGuard eventIds="1" id="Data Flow Guard 5c8d" name="Data Flow Guard f5ae"/>
-        <milestone eventIds="2" id="Milestone bbab" name="Milestone 2035">
-          <condition id="Condition 7fe3" name="Condition e98e"/>
+      <stage id="Stage 24a8" name="Stage 1479">
+        <dataFlowGuard eventIds="4" id="Data Flow Guard 483a" name="Data Flow Guard 14f4"/>
+        <dataFlowGuard eventIds="3" id="Data Flow Guard aa6b" name="Data Flow Guard cbc7"/>
+        <milestone eventIds="5" id="Milestone a871" name="Milestone eaaf">
+          <condition id="Condition dbd3" name="Condition 7402"/>
         </milestone>
+        <subStage id="Nested Stage c35c" name="Nested Stage faa9">
+          <dataFlowGuard id="Data Flow Guard 2928" name="Data Flow Guard 6e93"/>
+          <milestone id="Milestone 95b6" name="Milestone aae8">
+            <condition id="Condition 25ae" name="Condition ed03"/>
+          </milestone>
+        </subStage>
+        <subStage id="Nested Stage 316d" name="Nested Stage 0f3f">
+          <dataFlowGuard id="Data Flow Guard c565" name="Data Flow Guard 0e6e"/>
+          <milestone id="Milestone 8f98" name="Milestone 0867">
+            <condition id="Condition 5a31" name="Condition ee67"/>
+          </milestone>
+        </subStage>
       </stage>
     </guardedStageModel>
   </component>
