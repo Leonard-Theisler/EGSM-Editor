@@ -6,8 +6,9 @@ E-GSM is an artifact-driven modeling language suited to autonomously monitor bus
 How to run the editor:
 - Install Obeo Designer (https://www.obeodesigner.com/en/download)
 - Clone the repository
-- Import metaModelv3, metaModelv3.edit, and metaModelv3.editor into your workspace (you will find these files on the "MetaModel" branch)
+- Import gs_derived, gs_derived.edit, and gs_derived.editor into your workspace (you will find these files on the "MetaModel" branch)
 - Launch a new runtime
-- Import the EGSMmodel3 project and EGSMeditor3.design projects into the new runtime (you will find these on the "master" branch)
-- Expand the EGSMmodel3 project until you find EGSMmodel4.metamodelv3 file
-- Either open the existing editor, or make a new one by right clicking the topmost stage and using new representation -> new model
+- Import the newModel2 project and newEditor.design projects into the new runtime (you will find these on the "master" branch)
+- Expand the newModel2 project until you find newModel2.gsm_derived file
+- Expand this file, and open MVP3. The editor should open.
+- If this does not work, or MVP3 does not appear, make a new diagram by right clicking the composite application and using new representation -> new newmodel
