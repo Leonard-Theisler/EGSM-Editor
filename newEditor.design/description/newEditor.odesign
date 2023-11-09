@@ -6,7 +6,7 @@
       <defaultLayer name="Default">
         <containerMappings name="Stage" semanticCandidatesExpression="aql:self.component.guardedStageModel.stage" domainClass="application::StageType">
           <borderedNodeMappings name="Milestone" semanticCandidatesExpression="feature:milestone" domainClass="application::MilestoneType">
-            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/newEditor.design/Icons/MilestoneIcon.svg">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:name " sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/newEditor.design/Icons/MilestoneIcon.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <forbiddenSides>WEST</forbiddenSides>
@@ -147,7 +147,7 @@
     <metamodels href="http://siena.ibm.com/model/CompositeApplication#/"/>
     <categories name="Default Category">
       <pages name="Condition" labelExpression="Condition" domainClass="application::MilestoneType" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
-      <pages name="Hierarchy" labelExpression="Hierarchy" domainClass="application::CompositeApplicationType" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.1"/>
+      <pages name="Export" labelExpression="Export" domainClass="application::CompositeApplicationType" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.1"/>
       <pages name="Event Model" labelExpression="Event Model" domainClass="application::CompositeApplicationType" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.2"/>
       <groups name="Condition" labelExpression="Condition" domainClass="application::MilestoneType" semanticCandidateExpression="var:self">
         <controls xsi:type="properties:TextDescription" name="Condition Description" labelExpression="Condition Description" helpExpression="This is the description of the condition associated to this milestone" valueExpression="aql:self.condition.description">
@@ -186,10 +186,12 @@
           </initialOperation>
         </controls>
       </groups>
-      <groups name="Hierarchy" labelExpression="Hierarchy" domainClass="application::CompositeApplicationType" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties:ButtonDescription" name="Create Hierarchy " labelExpression="Create Hierarchy (required)" helpExpression="This creates all of the necessary classes to build a model" buttonLabelExpression="Create">
+      <groups name="Export" labelExpression="Export" domainClass="application::CompositeApplicationType" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:ButtonDescription" name="Export as xml" labelExpression="Export as xml" helpExpression="This exports the current model as an xml, and also generates the information model file. Make sure to save the model before exporting." buttonLabelExpression="Export">
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:createHierarchy"/>
+            <firstModelOperations xsi:type="tool_1:If" conditionExpression="service:correctnessChecker">
+              <subModelOperations xsi:type="tool_1:Let" valueExpression="service:save"/>
+            </firstModelOperations>
           </initialOperation>
         </controls>
       </groups>

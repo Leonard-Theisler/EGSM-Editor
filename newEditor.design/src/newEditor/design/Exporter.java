@@ -26,14 +26,23 @@ public class Exporter {
 	String xslFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2siena.xsl";
 	String xsdFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2xsd.xsl";
 	
+	int trimmer;
+	String xsdFilePath;
 	
 	public void export(CompositeApplicationType app) {
 		
-		getFilePath();
+
+		filePath = getFilePath();
+
+		if (filePath == null) {return;} //stops execution of the method if there is no file name
+		
+		trimmer = filePath.lastIndexOf('\\');
+		xsdFilePath = filePath.substring(0, trimmer) + "\\infoModel.xsd";
+		
+
     	transformXML(inFile, filePath + ".xml", xslFile);
-    	transformXML(inFile, filePath + ".xsd", xsdFile);
-    	
-    	app.getComponent().get(0).getInformationModel().getDataItem().setSchemaUri("filePath.xsd");
+    	transformXML(inFile, xsdFilePath, xsdFile);
+    	  	
 
 
  	}
@@ -48,14 +57,15 @@ public class Exporter {
     	
         fileExplorer.showSaveDialog(null);
         
-        filePath = fileExplorer.getSelectedFile().toString();
-        System.out.println(filePath);
-        System.out.println(filePath.contains(".xml"));
-        if (filePath.contains(".xml")) {filePath = filePath.replace(".xml", "");}; 
-        if (filePath.contains(".xsd")) {filePath = filePath.replace(".xsd", "");}; 
-
+        if (fileExplorer.getSelectedFile() != null) {
+        	filePath = fileExplorer.getSelectedFile().toString();
+        
+        	if (filePath.contains(".xml")) {filePath = filePath.replace(".xml", "");}; 
+        	if (filePath.contains(".xsd")) {filePath = filePath.replace(".xsd", "");}; 
+        }
+        
         return filePath;
-   
+           
    }
     
 	

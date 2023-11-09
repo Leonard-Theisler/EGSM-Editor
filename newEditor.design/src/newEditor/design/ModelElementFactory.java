@@ -205,6 +205,9 @@ public class ModelElementFactory {
 	    }
 	 
 	 public void createHierarchy(CompositeApplicationType app) {
+		 
+		 	app.setName("Application");
+		 	
 	    	app.setComponent(new ComponentTypeImpl());
 	    	app.getComponent().get(0).setId("model");
 	    	app.getComponent().get(0).setName("model");
@@ -218,6 +221,7 @@ public class ModelElementFactory {
 	    	app.getComponent().get(0).getInformationModel().setDataItem(new DataItemTypeImpl());    	
 	    	app.getComponent().get(0).getInformationModel().getDataItem().setId("infoModel");
 	    	app.getComponent().get(0).getInformationModel().getDataItem().setRootElement("infoModel");
+	    	app.getComponent().get(0).getInformationModel().getDataItem().setSchemaUri("infoModel.xsd");
 
 	    	
 	    	app.setEventModel(new EventModelTypeImpl());
