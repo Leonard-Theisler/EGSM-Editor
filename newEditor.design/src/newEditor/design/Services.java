@@ -12,19 +12,12 @@ import application.CompositeApplicationType;
  */
 public class Services {
 	
-	Exporter exporter = new Exporter();
-	UUIDFactory idFactory = new UUIDFactory();
-	Checker checker = new Checker();
-	ModelElementFactory eFactory = new ModelElementFactory(); 
-    
-	int stagenum = 0;
-	int eventnum = 0;
-	int stageIndex;
-	String id;
-	String name;
-	String failure = "You must create a model";
-	ArrayList<String> alreadyGen = new ArrayList<String>();
-	ArrayList<String> eventCheck = new ArrayList<String>();
+	//This class is a facade that calls methods from all of the other classes, it does not implement any logic.
+	
+	private Exporter exporter = new Exporter();
+	private UUIDFactory idFactory = new UUIDFactory();
+	private Checker checker = new Checker();
+	private ModelElementMaker modelElementMaker = new ModelElementMaker(); 
 
 
 	
@@ -61,19 +54,19 @@ public class Services {
     
     public boolean createElement(EObject element) {
     	
-    	return eFactory.EGSMfactory(element);
+    	return modelElementMaker.EGSMfactory(element);
     	
     }
     
     public void createHierarchy(CompositeApplicationType app) {
     	
-    	eFactory.createHierarchy(app);
+    	modelElementMaker.createHierarchy(app);
     	
     }
     
     public boolean createStage(CompositeApplicationType app) {
     	
-    	return eFactory.createStage(app);
+    	return modelElementMaker.createStage(app);
     	
     }
       
@@ -85,7 +78,7 @@ public class Services {
     
     public void createEvents(CompositeApplicationType app) {
     	
-    	eFactory.makeEvents(app);
+    	modelElementMaker.makeEvents(app);
     	
     }
        

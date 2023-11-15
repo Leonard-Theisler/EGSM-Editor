@@ -23,8 +23,10 @@ import application.impl.MilestoneTypeImpl;
 import application.impl.StageTypeImpl;
 import application.impl.SubStageTypeImpl;
 
-public class ModelElementFactory {
+public class ModelElementMaker {
 	
+	//This class is used to create model elements
+	//it is similar to factory but not quite the same, as it has a lot more features than just creation
 	Checker check = new Checker();
 	UUIDFactory idmaker = new UUIDFactory();
 	
@@ -44,7 +46,7 @@ public class ModelElementFactory {
 			//createStage((CompositeApplicationType) element);
 			return true;
 		}
-		else if (element instanceof StageType) {
+		if (element instanceof StageType) {
 			createStage((StageType) element);
 		}
 		else if (element instanceof SubStageType) {
@@ -56,7 +58,8 @@ public class ModelElementFactory {
 		
 		return false;
 	}
-
+	
+	//used for stage creation as well as checking for the hierachy
 	public boolean createStage(CompositeApplicationType app) {
     	
     	
@@ -111,6 +114,7 @@ public class ModelElementFactory {
     	return false;
     }
 	
+	//adds DFG and milestone to stages and substages, makes it appear automatically when the stage is created
 	 private void populateStage(CompositeApplicationType app) {
 	    	
 	    	DataFlowGuardType data = new DataFlowGuardTypeImpl();
@@ -204,6 +208,7 @@ public class ModelElementFactory {
 	    	
 	    }
 	 
+	 //creates the hierachy necessary for engine compatibility
 	 public void createHierarchy(CompositeApplicationType app) {
 		 
 		 	app.setName("Application");
@@ -240,15 +245,16 @@ public class ModelElementFactory {
 	    	
 	    }
 	    
+	 //this method event creation and deletion, it calls the other ones and handles everything
 	public void makeEvents(CompositeApplicationType app) {
 	    	
 	    	ArrayList<String> dupeCheck = new ArrayList<String>();
 	    	
 	    	generateEvents(app);
 	    	
-	    	   	
+	    	
 	    	if (alreadyGen.size() > 0) {
-	    		//eventcheck is the new events
+	    		//eventcheck is the newly created events
 	    		//alreadygen is all of the events
 	    		   		
 	    		for (int j = 0; j < alreadyGen.size(); j++) {
@@ -268,6 +274,7 @@ public class ModelElementFactory {
 
 	    }
 	    
+	//removes duplicate events
 	    public void removeDupes(CompositeApplicationType app, ArrayList<String> list) {
 	    	for (int i = 0; i < app.getEventModel().getEvent().size(); i++) {
 				if (!list.contains(app.getEventModel().getEvent().get(i).getId())){
@@ -282,6 +289,7 @@ public class ModelElementFactory {
 			}
 	    }
 	    
+	    //uterates over the entire model to find and create all events
 	    public void generateEvents(CompositeApplicationType app) {
 	    	
 	    	eventCheck.clear();

@@ -16,6 +16,7 @@ public class Checker {
     	return false;
     }
 
+	//runs all of the checks
 	public boolean checkCorrectness(CompositeApplicationType app) {
 		if (!hierarchyChecker(app)) {
     		EM.show(failure, true);
@@ -34,7 +35,7 @@ public class Checker {
     	return true;
 	}
 	
-	
+	//Checks for the presence of a hierarhy, necessary when exporting
 	public boolean hierarchyChecker(CompositeApplicationType app) {
     	if (app.getComponent().size() == 0) {
     		failure = "You must create at least one stage.";
@@ -44,7 +45,7 @@ public class Checker {
     	return true;
     } 
 	
-	
+	//checks for completeness of the model, necessary when saving
 	public boolean stageChecker(CompositeApplicationType app) {
     	
 	   	
