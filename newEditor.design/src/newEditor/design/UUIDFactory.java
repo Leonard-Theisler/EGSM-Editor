@@ -14,6 +14,7 @@ import application.SubStageType;
 
 public class UUIDFactory {
 	
+	//this class is a simple factory to create UUIDs
 	String id;
 	String name;
 	

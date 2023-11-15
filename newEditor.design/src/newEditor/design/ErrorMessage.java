@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 public class ErrorMessage {
 
+	//This class defines the error/warning popup when the user tries to export an invalid or incomplete model 
 	public void show(String s, boolean error) {
 		
 		if (!error) {

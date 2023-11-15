@@ -1,5 +1,6 @@
 package newEditor.design;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -20,18 +21,32 @@ import application.CompositeApplicationType;
 
 public class Exporter {
 	
-	//keep the absolute path, change to relative when deploying
-	String filePath;
-	String inFile = "C:\\Users\\leona\\git\\EGSM-Editor\\newModel2\\newModel2.gsm_derived";
-	String xslFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2siena.xsl";
-	String xsdFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2xsd.xsl";
 	
+	//absolute paths
+	//String inFile;// = "C:\\Users\\leona\\git\\EGSM-Editor\\newModel2\\newModel2.gsm_derived";
+	//String xslFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2siena.xsl";
+	//String xsdFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2xsd.xsl";
+	
+	//relative paths
+	String xslFile = Exporter.class.getProtectionDomain().getCodeSource().getLocation().getPath().toString() + "StyleSheets/xmi2siena.xsl";
+	String xsdFile = Exporter.class.getProtectionDomain().getCodeSource().getLocation().getPath().toString() + "StyleSheets/xmi2xsd.xsl";
+	String inFile = Exporter.class.getProtectionDomain().getCodeSource().getLocation().getPath().toString();
+			
 	int trimmer;
 	String xsdFilePath;
+	String filePath;
 	
 	public void export(CompositeApplicationType app) {
 		
+		trimmer = inFile.lastIndexOf('/');
+		inFile = inFile.substring(0,trimmer);
+		inFile = inFile.substring(0,trimmer);
+		trimmer = inFile.lastIndexOf('/');
+		inFile = inFile.substring(0,trimmer); 
+		trimmer = inFile.lastIndexOf('/');
+		inFile = inFile.substring(0,trimmer) + "/newModel2/newModel2.gsm_derived";
 
+		
 		filePath = getFilePath();
 
 		if (filePath == null) {return;} //stops execution of the method if there is no file name
@@ -46,6 +61,7 @@ public class Exporter {
 
 
  	}
+	
 	// Opens the file explorer and gets the filename and path from the user   
     private String getFilePath() {
         
@@ -90,6 +106,8 @@ public class Exporter {
             xformer.transform(source, result);
             
         } catch (FileNotFoundException e) {
+        	System.out.println("File not found");
+        	System.out.println(inFilename);
         	
         } catch (TransformerConfigurationException e) {
             // An error occurred in the XSL file
