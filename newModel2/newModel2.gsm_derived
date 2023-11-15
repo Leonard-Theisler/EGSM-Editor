@@ -5,19 +5,6 @@
     <informationModel id="infoModel" rootDataItemId="infoModel">
       <dataItem id="infoModel" rootElement="infoModel" schemaUri="infoModel.xsd"/>
     </informationModel>
-    <guardedStageModel>
-      <stage id="Stage 65b7" name="Stage ae8c">
-        <dataFlowGuard id="Data Flow Guard b7db" name="Data Flow Guard ecdc"/>
-        <milestone id="Milestone 9e2b" name="Milestone bb4e">
-          <condition id="Condition 2764" name="Condition e936"/>
-        </milestone>
-        <subStage id="Nested Stage b62b" name="Nested Stage c60b">
-          <dataFlowGuard id="Data Flow Guard 1ce2" name="Data Flow Guard c469"/>
-          <milestone id="Milestone 2d99" name="Milestone 9148">
-            <condition id="Condition bba9" name="Condition 2d93"/>
-          </milestone>
-        </subStage>
-      </stage>
-    </guardedStageModel>
+    <guardedStageModel/>
   </component>
 </application:CompositeApplicationType>

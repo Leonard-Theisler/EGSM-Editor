@@ -17,20 +17,19 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
+import org.eclipse.core.resources.ResourcesPlugin;
+
 import application.CompositeApplicationType;
 
 public class Exporter {
 	
 	
 	//absolute paths
-	//String inFile;// = "C:\\Users\\leona\\git\\EGSM-Editor\\newModel2\\newModel2.gsm_derived";
+	//String inFile = "C:\\Users\\leona\\git\\EGSM-Editor\\newModel2\\newModel2.gsm_derived";
 	//String xslFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2siena.xsl";
 	//String xsdFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2xsd.xsl";
 	
-	//relative paths
-	String xslFile = Exporter.class.getProtectionDomain().getCodeSource().getLocation().getPath().toString() + "StyleSheets/xmi2siena.xsl";
-	String xsdFile = Exporter.class.getProtectionDomain().getCodeSource().getLocation().getPath().toString() + "StyleSheets/xmi2xsd.xsl";
-	String inFile = Exporter.class.getProtectionDomain().getCodeSource().getLocation().getPath().toString();
+	
 			
 	int trimmer;
 	String xsdFilePath;
@@ -38,6 +37,11 @@ public class Exporter {
 	
 	public void export(CompositeApplicationType app) {
 		
+		//relative paths
+		String xslFile = Exporter.class.getProtectionDomain().getCodeSource().getLocation().getPath().toString() + "StyleSheets/xmi2siena.xsl";
+		String xsdFile = Exporter.class.getProtectionDomain().getCodeSource().getLocation().getPath().toString() + "StyleSheets/xmi2xsd.xsl";
+		String inFile = Exporter.class.getProtectionDomain().getCodeSource().getLocation().getPath().toString();
+				
 		trimmer = inFile.lastIndexOf('/');
 		inFile = inFile.substring(0,trimmer);
 		inFile = inFile.substring(0,trimmer);
