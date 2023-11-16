@@ -187,6 +187,36 @@
         </controls>
       </groups>
       <groups name="Export" labelExpression="Export" domainClass="application::CompositeApplicationType" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:ButtonDescription" name="Choose File" labelExpression="Choose File" helpExpression="Select the model file to be exported as an xml" buttonLabelExpression="Choose">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:getInfile"/>
+          </initialOperation>
+        </controls>
+        <controls xsi:type="properties:TextDescription" name="File to export" labelExpression="File to export:" valueExpression="service:printInFile()">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:printInFile()"/>
+          </initialOperation>
+        </controls>
+        <controls xsi:type="properties:ButtonDescription" name="Choose xsl Stylesheet" labelExpression="Choose xml stylesheet" helpExpression="Select the stylesheet for translation to .xml file" buttonLabelExpression="Choose">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:getxslfile()"/>
+          </initialOperation>
+        </controls>
+        <controls xsi:type="properties:TextDescription" name="xml Stylesheet" labelExpression="xml stylesheet" valueExpression="service:printxslFile()">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:printxslFile()"/>
+          </initialOperation>
+        </controls>
+        <controls xsi:type="properties:ButtonDescription" name="Choose xsd Stylesheet" labelExpression="Choose xsd stylesheet" helpExpression="Select the stylesheet for translation to .xsd file" buttonLabelExpression="Choose">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:getxsdfile()"/>
+          </initialOperation>
+        </controls>
+        <controls xsi:type="properties:TextDescription" name="xsd Stylesheet" labelExpression="xsd stylesheet" valueExpression="service:printxsdFile()">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:printxsdFile()"/>
+          </initialOperation>
+        </controls>
         <controls xsi:type="properties:ButtonDescription" name="Export as xml" labelExpression="Export as xml" helpExpression="This exports the current model as an xml, and also generates the information model file. Make sure to save the model before exporting." buttonLabelExpression="Export">
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:If" conditionExpression="service:correctnessChecker">

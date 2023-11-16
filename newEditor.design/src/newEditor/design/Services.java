@@ -33,6 +33,40 @@ public class Services {
 
     }
     
+    public void getInfile(CompositeApplicationType app) {
+    	
+    	exporter.getInFile();
+    	
+    }
+    public void getxslfile(CompositeApplicationType app) {
+    	
+    	exporter.getxslFile();
+    	
+    }
+    public void getxsdfile(CompositeApplicationType app) {
+ 	
+    	exporter.getxsdFile();
+ 	
+ }
+    
+    public String printInFile(CompositeApplicationType app) {
+    	
+    	return exporter.inFile;
+    	
+    }
+    
+    public String printxslFile(CompositeApplicationType app) {
+    	
+    	return exporter.xslFile;
+    	
+    }
+
+    public String printxsdFile(CompositeApplicationType app) {
+	
+	return exporter.xsdFile;
+	
+}
+    
     public String generateIDorName(EObject element) {
     	
     	return idFactory.getUUID(element);

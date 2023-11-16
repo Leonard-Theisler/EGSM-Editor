@@ -28,9 +28,9 @@ public class Exporter {
 	//String xsdFile = "C:\\Users\\leona\\OneDrive\\Bureau\\Thesis\\bpmn2egsm\\it.polimi.isgroup.bpmn2egsmplugin\\xmi2xsd.xsl";
 	
 	//relative paths
-	String xslFile = Exporter.class.getProtectionDomain().getCodeSource().getLocation().getPath().toString() + "StyleSheets/xmi2siena.xsl";
-	String xsdFile = Exporter.class.getProtectionDomain().getCodeSource().getLocation().getPath().toString() + "StyleSheets/xmi2xsd.xsl";
-	String inFile = Exporter.class.getProtectionDomain().getCodeSource().getLocation().getPath().toString();
+	String xslFile;// = Exporter.class.getProtectionDomain().getCodeSource().getLocation().getPath().toString() + "StyleSheets/xmi2siena.xsl";
+	String xsdFile;// = Exporter.class.getProtectionDomain().getCodeSource().getLocation().getPath().toString() + "StyleSheets/xmi2xsd.xsl";
+	String inFile;// = Exporter.class.getProtectionDomain().getCodeSource().getLocation().getPath().toString();
 			
 	int trimmer;
 	String xsdFilePath;
@@ -38,13 +38,13 @@ public class Exporter {
 	
 	public void export(CompositeApplicationType app) {
 		
-		trimmer = inFile.lastIndexOf('/');
+		/*trimmer = inFile.lastIndexOf('/');
 		inFile = inFile.substring(0,trimmer);
 		inFile = inFile.substring(0,trimmer);
 		trimmer = inFile.lastIndexOf('/');
 		inFile = inFile.substring(0,trimmer); 
 		trimmer = inFile.lastIndexOf('/');
-		inFile = inFile.substring(0,trimmer) + "/newModel2/newModel2.gsm_derived";
+		inFile = inFile.substring(0,trimmer) + "/newModel2/newModel2.gsm_derived";*/
 
 		
 		filePath = getFilePath();
@@ -61,6 +61,48 @@ public class Exporter {
 
 
  	}
+	
+	public void getInFile() {
+		
+        JFileChooser fileExplorer = new JFileChooser();
+        
+        fileExplorer.showOpenDialog(null);
+        
+        if (fileExplorer.getSelectedFile() != null) {
+        	inFile = fileExplorer.getSelectedFile().toString();
+        }
+        
+        System.out.println(inFile);
+		
+	}
+	
+	public void getxslFile() {
+		
+        JFileChooser fileExplorer = new JFileChooser();
+        
+        fileExplorer.showOpenDialog(null);
+        
+        if (fileExplorer.getSelectedFile() != null) {
+        	xslFile = fileExplorer.getSelectedFile().toString();
+        }
+        
+        System.out.println(xslFile);
+		
+	}
+	
+	public void getxsdFile() {
+		
+        JFileChooser fileExplorer = new JFileChooser();
+        
+        fileExplorer.showOpenDialog(null);
+        
+        if (fileExplorer.getSelectedFile() != null) {
+        	xsdFile = fileExplorer.getSelectedFile().toString();
+        }
+        
+        System.out.println(xsdFile);
+		
+	}
 	
 	// Opens the file explorer and gets the filename and path from the user   
     private String getFilePath() {
