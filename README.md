@@ -7,10 +7,10 @@ E-GSM is an artifact-driven modeling language suited to autonomously monitor bus
 
 How to run the editor:
 
-Deployment has caused some bugs, and as such, the deployed version of the editor does not reflect the final product. Nevertheless, it is available in a google drive folder at the following url: https://drive.google.com/drive/folders/1ofOCi6xHDwY6-aRAcO-HiRiADHx7jit1?usp=sharing
-Setup instructions, as well as a README introducing the user to the tool and documenting the bugs are available in this folder.
+Deployment has caused a bug, and as such, the deployed version of the editor does not reflect the final product. We were unable to fix the bug, but a work-around has been provided, which makes the deployed editor fully functional. The export feature is slightly different from the non-deployed editor. The deployed editor is available in a google drive folder at the following url: https://drive.google.com/drive/folders/1ofOCi6xHDwY6-aRAcO-HiRiADHx7jit1?usp=sharing
+Setup instructions, as well as a README introducing the user to the tool and documenting the bugs are available in this folder. The code for this deployed editor is found on the "Refactoring" branch, while the non-deployed code is on master. The code on the master branch is the one that is considered final.
 
-The editor can also be run using the source code, which showcases all of the features. In order to do so, you will need to install Eclipse, as well as Sirius.
+The editor can also be run using the source code. In order to do so, you will need to install Eclipse, as well as Sirius.
 To install Sirius, copy this link: https://download.eclipse.org/sirius/updates/releases/7.2.1/2023-03
 and, in Eclipse, navigate to Help -> Install new software, and paste the link. The following steps are presented below:
 
